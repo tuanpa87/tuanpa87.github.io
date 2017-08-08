@@ -1,0 +1,45 @@
+* {
+	box-sizing: border-box;
+}
+
+body{
+	background-color:#e4e4e4;
+	font-size: 18px;
+	font-family: sans-serif;
+}
+
+div{
+	width:1000px;
+	text-align: justify;
+}
+
+#top{
+	font-family: sans-serif;
+	margin-left: 50px
+}
+
+#top a {
+	text-decoration: none;
+}
+
+#anhsp a {
+	display:block;
+	text-align: center;
+}
+
+span{
+	font-weight: bold;
+	color:green;
+}
+
+a:link {
+	color:green;
+}
+
+a:hover {
+	color:green;
+}
+
+a:active {
+	color: red;
+}
