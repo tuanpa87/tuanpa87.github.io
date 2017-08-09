@@ -1,0 +1,12 @@
+b.money::before{
+	content:"Học phí "
+}
+b.money::after{
+	content:" VNĐ";
+}
+
+h2::first-letter{
+	font-size: 2em;
+	color:red;
+}
+

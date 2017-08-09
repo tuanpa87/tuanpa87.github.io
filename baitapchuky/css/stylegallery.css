@@ -1,0 +1,149 @@
+* {box-sizing: border-box}
+
+
+.wrap {
+/*	overflow: auto;*/
+	overflow: hidden;
+	margin:auto;
+}
+
+@keyframes title {
+	50% { color: red; }
+}
+
+h1 {
+	font-size:2em;
+	text-transform: uppercase;
+	text-align: center;
+	animation: title 10s ease infinite;
+}
+
+
+.album {
+	display: inline-block;
+	margin: auto;
+	text-align: center;
+}
+/*display:inline-block thay cho float*/
+/*inline-block tao ra mot khoang 4px xung quanh block*/
+/*de margin right nen center bao gom ca margin */
+/*margin:auto để canh bên ngoài đều bên ngoài div album
+text-align: center để canh đều bên trong div*/
+
+
+.anh1, .anh2, .anh3, .anh4,.anh5, .anh6, .anh7, .anh8, .anh9
+{
+		max-width:30%;
+		border:1px solid lightgreen;
+		background-color: white;
+		padding: 10px;
+		margin-right: 10px;
+		margin-top: 10px;
+
+}
+
+#main-menu {
+	position:relative;
+}
+
+#main-menu > a:first-child {
+	padding: 4px;
+	background-color: white;
+	border-radius: 50%;
+	position: absolute;
+	top: -106px;
+    left: 56px;
+}
+
+
+#main-menu > a:first-child > img {
+	max-width: 180px;	
+	border-radius: 50%;
+}
+
+#chat img{ 
+	max-width: 30%;
+ }
+
+#chat{
+	position: fixed;
+	bottom: 30px;
+	right: 28px;
+}
+
+.anh1 img {
+	opacity: 1;
+	transition: opacity 2s linear, max-width 0.5s linear;
+}
+
+.anh1:hover img {
+	opacity: 0.5;
+	max-width: 60%;
+}
+
+.anh2,.anh3,.anh6 img {
+ 	transition: all 2s linear;
+  }
+
+.anh2:hover {
+	transform:scaleX(1.2);
+}
+/*ca khung anh*/
+
+.anh3 {overflow:hidden;}
+.anh3:hover img{
+	transform: scale(1.5);
+	opacity: 0.5;
+}
+
+
+
+.dong2 {
+ 	transition: all 0.5s linear;
+ }
+
+
+
+.anh4:hover, .anh5:hover {
+	transform: translate(0,-5px);
+	box-shadow:         0px 16px 18px 0px rgba(48, 50, 50, 0.88);
+}
+
+
+.anh6:hover {
+	transform: rotate(180deg);
+}
+
+/*.dong1, .dong2, .dong3 
+{
+	margin:auto;
+}
+*/
+
+
+
+#ssss{
+	font-size: 1.2em;
+	display: inline;
+/*	padding-left: 140px;*/
+}
+
+
+@keyframes signature {
+	0% {opacity:0; transform: translateX(140px)}
+	25% {transform: translateX(0%);opacity:1;}
+	50% {transform: translateX(0%);opacity:1;}
+	100% {transform: translateX(-40%);opacity:0; margin-left:140px}
+}
+
+/*them 1 le trai bang kich thuoc chu */
+
+
+
+#chuki {
+		padding-left: 140px;
+		font-size: 1.2em;
+		text-align: right;
+		animation: signature 5s linear infinite}
+}
+
