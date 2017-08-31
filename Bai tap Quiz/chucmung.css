@@ -1,0 +1,38 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background: black;
+}
+
+
+
+.page {
+	max-height: 100%;
+	max-width: 1000px;
+	margin: 0 auto;
+	display: flex;
+	display: -webkit- flex;
+	flex-flow: row wrap; 
+	align-items: center; 
+	justify-content: center;
+/*	The flex-flow property is a shorthand property for the flex-direction and the flex-wrap properties*/
+}
+
+#cmtext, #cmimg {padding: 35px;
+	text-align: center;
+	color: #005555;
+	font-size: 2.5em;
+}
+
+
+#cmimg > img {
+		visibility: visible;
+		height: 350px;
+}
+
+
+
+
+
