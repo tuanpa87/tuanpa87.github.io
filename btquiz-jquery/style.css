@@ -1,0 +1,185 @@
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background:  lightgrey;
+	background-image:  url("img/background.jpg");
+ 	background-repeat: no-repeat;
+ 	background-attachment: fixed;
+ 	background-position: center; 
+}
+.page {
+	max-height: 100%;
+	max-width: 1000px;
+	margin: 0 auto;
+	text-align: center;
+	display: flex;
+	display: -webkit- flex;
+	flex-flow: row wrap; 
+	position: relative;
+/*	The flex-flow property is a shorthand property for the flex-direction and the flex-wrap properties*/
+}
+
+.page > * {
+	-webkit- flex: 1 100%;
+	flex: 1 100%;
+}
+
+header {
+	/*background: white;*/
+	color: grey;
+	padding: 1em;
+}
+
+footer {
+	color: white;
+/*	background: white;*/
+	padding: 1em;
+}
+
+h1{ text-align: center;
+	color: #005555;
+	font-size: 2.5em; }
+
+h2 {
+	text-align: left;
+	text-indent: 25px;
+	font-family: Arial;
+	color: #005555;
+	font-size: 2em;
+	margin-bottom: 10px;
+}
+
+.content {
+	height: 420px;
+	display: flex;
+	display: -webkit- flex;
+	flex-flow: row wrap; 
+	/*background: white;*/
+	align-items: center; 
+	justify-content: center;
+}
+
+
+/*doan nay lam kich thuoc*/
+
+#question {
+	/*height: 80px;*/
+	flex: 1 100%;
+	height: 100px;
+	margin: 0;
+	padding: 10px;
+	background: red;
+	display: flex;
+	display: -webkit- flex;
+	justify-content: center;
+	align-items: center; 
+}
+
+
+
+/*doan nay lam kich thuoc*/
+#A, #B, #c, #D {
+	text-indent: 20px;
+	height: 80px;
+	margin: 25px;
+	margin-top: 0;
+	margin-bottom: 0;
+	flex: 1 35%;
+	background: blue;
+	display: flex;
+	display: -webkit- flex;
+	justify-content: space-between;
+	align-items: center; 
+}
+
+/*doan nay trinh bay mau sac*/
+
+
+#question, #A, #B, #c, #D {
+	
+	  background: #80e7f2;
+	  background-image: -webkit-linear-gradient(top, #80e7f2, #3a7ea6);
+	  background-image: linear-gradient(to bottom, #80e7f2, #3a7ea6);
+	  -webkit-border-radius: 30;
+	  border-radius: 30px;
+	  font-family: Arial;
+	  color: #005555;
+	  font-size: 30px;
+	  padding: 10px 20px 10px 20px;
+	  text-decoration: none;
+}
+
+#question:hover, #A:hover, #B:hover, #C:hover, #D:hover {
+background: #46aff0;
+background-image: linear-gradient(to bottom, #3cf6fc, #3498db);
+text-decoration: none}
+
+div > img {
+	visibility: hidden;
+	opacity: 0.7;
+	float: right;
+}
+
+#theme {
+	/*Same as flex: 0 0 auto.*/
+	flex: none;
+    width: 125px;
+    text-align: center;
+    height: 45px;
+    line-height: 45px;
+    border: 1px solid lightgrey;
+    background: lightgreen;
+    position: absolute;
+    top: 35px;
+    right: 18px;
+    background: #ffd494;
+    border-radius: 28px;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 0.9em;
+  }
+
+
+/*The align-items, or respectively align-content attribute controls this behaviour.
+
+align-items defines the items positioning perpendicularly to flex-direction, 
+the default flex-direction is row, therfore vertical placement can be controlled with align-items. 
+There is also the align-self attribute to control the alignment on a per item basis.*/
+
+#theme:hover {
+	background: #ffbf66;
+}
+
+
+/*style 2 */
+
+
+/*
+body {
+	background-image:  url("img/background 2.jpg");
+ 	background-repeat: no-repeat;
+ 	background-attachment: fixed;
+ 	background-position: center; 
+}
+
+
+h1,h2 {
+	color:  #2E8B57;
+}
+
+#question, #A, #B, #c, #D {
+	background: #92f05b;
+	background-image: -webkit-linear-gradient(top, #92f05b, #ddf2b5);
+	background-image: linear-gradient(to bottom, #92f05b, #ddf2b5);
+	font-family: Verdana;
+	color: #2E8B57;
+}
+
+#question:hover, #A:hover, #B:hover, #C:hover, #D:hover {
+	background: #42f55d;
+	background-image: linear-gradient(to bottom, #42f55d, #5bf23d);
+}
+*/
