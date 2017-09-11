@@ -1,0 +1,103 @@
+<html>
+<head>
+	<meta charset='utf8' />
+	<title> Đăng kí tài khoản </title>
+	<style> 
+		* {
+			box-sizing: border-box;
+			font-family: Arial;
+			font-size: 16;
+		}
+
+		body {
+			background: #e8e5e8;
+			display: flex;
+			justify-content:center;
+			align-items:center;
+		}
+
+		h1{
+			text-align: center;
+			margin: 0;
+			margin-bottom: 14px;
+			font-size: 28px;
+			color: #1abc9c;
+		}
+
+		form{
+			width: 400px;
+			height: 430px;
+			padding: 20px;
+			margin: auto;
+			font: Arial;
+			border: 2px solid #1abc9c; 
+			background: white;
+			border-radius: 10px;
+		}
+		
+		input{
+			margin: 10px;
+			border: solid 1px lightgrey;
+		}
+
+		input[type='text'] {
+			padding: 6px;
+			width: 320px;
+			border-radius: 4px;
+			border-width: 1px;
+		}
+
+		input[type='text']:focus {
+			background: #aef4e6;
+			border: solid 1px #1edab5
+		}
+
+		input[type='submit'], input[type='radio'], input[type='date'], label {
+			 cursor: pointer;
+		}
+
+		.input-center {
+			text-align: center
+		}
+
+		input[type='submit'] {	
+			 background-color: #1abc9c;
+			 padding: 8px;
+			 width: 110px;
+			 text-decoration: none;
+			 border:solid;
+			 border-radius: 10px;
+			 color: white;
+			 border: none;
+		}
+
+		/*	background: #169e83;*/
+		input[type='submit']:hover {
+			box-shadow:1px 7px 5px 0px rgba(206,199,198,1)
+		}
+	</style>
+</head>
+<body>
+
+	<div id='wrap'>
+	<h1> Đăng kí thành viên</h1>
+
+	<form action='result.html'>
+	 	<input type='text' name='name' placeholder="Họ và tên"/> <br/>
+	 	<input type='text' name='email' placeholder="Email"/> <br/>
+	 	<input type="text" name='password' placeholder="Mật khẩu"/> <br/>
+	 	<span class='input-span'> &nbsp; &nbsp; Giới tính: </span>
+	 	<input type='radio' name='gender' id='male' value ='male'checked> <label for='male'> Nam </label>
+	 	<input type='radio' name='gender' id='female' value='female'> <label for='female'> Nữ </label> <br/> 
+	 	<span class='input-span'> &nbsp; &nbsp; Ngày sinh: </span> <input type='date' name='bday' value='bday'>  <br/>
+	 	<input type='text' name='address' placeholder="Địa chỉ"/> <br/>
+	 	<input type='text' name='telphone' placeholder="Số điện thoại"/> <br/>
+	 	<div class='input-center'>
+	 	<input type='submit' value='Đăng nhập'/> 
+	 	</div>
+	 </div>
+	</form>
+
+</body> 
+
+</html>
