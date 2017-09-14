@@ -1,0 +1,144 @@
+<html>
+<head>
+	<meta charset='utf8' />
+	<title> Đăng kí tài khoản </title>
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+		body {
+			background: #e8e5e8;
+			display: flex;
+			justify-content:center;
+			align-items:center;
+		}
+
+		h1{
+			text-align: center;
+			margin: 0;
+			margin-bottom: 14px;
+			font-size: 28px;
+			color: #169e83;
+			font: Arial;
+		}
+
+		h2 {
+			text-align: center;
+			color: #169e83;
+		}
+
+		#infor {
+			width: 400px;
+			height: 470px;
+			padding: 20px;
+			margin: auto;
+			font: Arial;
+			border: 2px solid #1abc9c; 
+			background: white;
+			border-radius: 10px;
+			font: Arial;
+		} 
+
+		#infor > div {
+			margin: 10px;
+			padding: 6px;
+			color: #169e83;
+			font-size: 20px;
+			overflow: hidden;
+		}
+
+	</style>
+
+</head>
+
+
+<body>
+
+	<div id='wrap'>
+		<h1> Chúc mừng bạn đã đăng kí thành công</h1>
+		<div id='infor'> 
+			<h2> Thông tin tài khoản </h2>
+			<div> <span id='hoten'>Họ và tên: </span> </div>
+		 	<div> <span id='email'>Email: </span> </div>
+		 	<div> <span id='matkhau'>Mật khẩu: </span> </div>
+		 	<div> <span id='gioitinh'>Giới tính: </span> </div>
+		 	<div> <span id='ngaysinh'>Ngày sinh: </span> </div>
+		 	<div> <span id='diachi' >Địa chỉ: </span> </div>
+		 	<div> <span id='dienthoai'>Số điện thoại: </span> </div>
+		 	<div> <span id='facebook'>Facebook: </span> </div>
+		</div> 
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<script>
+
+		var uri = decodeURIComponent(window.location.href);
+		var lastIndex = uri.indexOf('result.html?');
+		var form2 = uri.slice(lastIndex+12,uri.length);
+		var form = form2.replace(/\+/g, ' ')
+		console.log(form);
+
+		var hoten = form.slice(form.indexOf('name=')+5,form.indexOf('&email='));
+		console.log(hoten);
+
+		var email = form.slice(form.indexOf('&email=')+7,form.indexOf('&password='));
+		console.log(email);
+
+		var matkhau = form.slice(form.indexOf('&password=')+10,form.indexOf('&gender='));
+		console.log(matkhau);
+
+		var gioitinh = form.slice(form.indexOf('&gender=')+8,form.indexOf('&bday='));
+		if (gioitinh==='male') {
+				gioitinh = 'Nam'
+			} else {
+				gioitinh='Nữ'
+			};
+		console.log(gioitinh);
+
+		var ngaysinhBefore2 = form.slice(form.indexOf('&bday=')+6,form.indexOf('&address='));
+		var ngaysinhBefore1 = new Date(ngaysinhBefore2)
+		var ngaysinh =''
+		if (ngaysinhBefore2 === '') {
+			ngaysinh = ''
+		} else {
+			ngaysinh = ngaysinhBefore1.getDate() + '/' +  (ngaysinhBefore1.getMonth() + 1) + '/' +  ngaysinhBefore1.getFullYear()
+		};
+		console.log(ngaysinh);
+
+	
+		var diachi = form.slice(form.indexOf('&address=')+9,form.indexOf('&telphone='));
+		console.log(diachi);
+
+		var dienthoai = form.slice(form.indexOf('&telphone=')+10,form.indexOf('&facebook='));
+		console.log(dienthoai);
+
+		var facebook = form.slice(form.indexOf('&facebook=')+10,form.length);
+		console.log(facebook);
+
+
+		$(function(){
+
+  		 // jQuery methods go here...
+
+			 $('#hoten').html('Họ và tên: '+ hoten)
+
+			 $('#email').html('Email: '+ email)
+			 	
+			 $('#matkhau').html('Mật khẩu: '+ matkhau)
+			 	
+			 $('#gioitinh').html('Giới tính: '+ gioitinh)
+			 	
+			 $('#ngaysinh').html('Ngày sinh: '+ ngaysinh)
+			 
+			 $('#diachi').html('Địa chỉ: '+ diachi)
+			 	
+			 $('#dienthoai').html('Số điện thoại: '+ dienthoai)
+
+			 $('#facebook').html('Facebook: '+ facebook)
+
+		});
+
+	</script>
+
+</body> 
