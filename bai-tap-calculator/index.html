@@ -1,0 +1,307 @@
+<html>
+<head>
+	<meta charset = 'utf8' / >
+	<title>Thuc hanh DOM event </title>
+
+	<link href="style.css"  type="text/css"  rel="stylesheet">
+</head>
+
+<body>
+
+	<div id = 'wrap'>
+
+		<div class='container'>
+
+			<div id ='hienthidiv'>  <span id = 'hienthi'>  0  </span> </div> 
+
+			<div id = 'hienthibieuthucdiv'>   <span id = 'hienthibieuthuc'>  0  </span>   </div>  
+
+			<div id = 'ketquadiv'>  <b id = 'ketquaText' > </b> </div>
+			
+			<div id='phim'> 
+
+				<button onclick ='press("X-sq")'  class = 'nut' id='X-sq'> X&#178; </button>
+				<button onclick = 'press("nd1")'  class = 'nut so' id= 'nd1'> ( </button>
+				<button onclick = 'press("nd2")'  class = 'nut so' id= 'nd2'> ) </button>
+				<button onclick =' press("%")' class = 'nut' id ='%'>  % </button>
+				<button onclick = 'back()' class = 'nut' id ='back'> &#9668; </button>
+			
+				<button onclick ='press("X-sqrt")'  class = 'nut' id='X-sqrt'> &radic; </button>
+				<button onclick = 'press(7)'  class = 'nut so' id='7'> 7 </button>
+				<button onclick = 'press(8)'  class = 'nut so' id='8'> 8 </button>
+				<button onclick = 'press(9)'  class = 'nut so' id='9'> 9 </button>
+				<button onclick ='press("+")' class = 'nut' id ='+'> + </button>
+
+				<button onclick ='press("X-f")'  class = 'nut' id='X-f'> X! </button>
+				<button onclick = 'press(4)'  class = 'nut so' id='4'> 4 </button>
+				<button onclick = 'press(5)'  class = 'nut so' id='5'> 5 </button>
+				<button onclick = 'press(6)'  class = 'nut so' id='6'> 6 </button>
+				<button onclick ='press("-")' class = 'nut' id ='-'> - </button>
+
+				<button onclick ='zero()' class = 'nut' id = 'C'> C </button>
+				<button onclick = 'press(1)'  class = 'nut so' id='1'> 1 </button>
+				<button onclick = 'press(2)'  class = 'nut so' id='2'> 2 </button>
+				<button onclick = 'press(3)'  class = 'nut so' id='3'> 3 </button>
+				<button onclick ='press("x")' class = 'nut' id ='x'> x </button>
+			
+				<button onclick ='press(".")'  class = 'nut' id='.'> . </button>
+				<button onclick = 'press(0)'  class = 'nut so' id='0'> 0 </button>
+				<button onclick ='ketquaFunction()' class = 'nut' id ='ketqua'> = </button>
+				<button onclick ='press("÷")' class = 'nut' id = "/"> ÷ </button>
+				
+			</div>
+
+		</div> 
+
+<!--  <script src='Demo DOM event.js'> </script> -->
+
+	</div>
+
+
+	<script>
+		var hien = '0';
+
+		var ketqua = 0;
+
+	// an C de tra lai 0 
+
+		var bieuthuc = '0';
+
+	//function tinh giai thua
+		function factorial(n) { 
+		  	var fac = 1
+		  	for (var i = 1; i <= n ; i = i + 1) { 
+			 fac = fac * i}
+		  	return fac
+		}
+
+		function press (x) {
+
+			switch (true) {
+				case (x === '+'): 
+					hien = hien + ' '  + document.getElementById(x).innerText + ' ' ;	
+					bieuthuc = bieuthuc + ' + ';	
+				break;
+
+				case (x === '-'): 
+					hien = hien + ' '  + document.getElementById(x).innerText + ' ';
+					bieuthuc = bieuthuc + ' - ';
+				break;
+
+				case (x === 'x'):
+					hien = hien + ' ' + document.getElementById(x).innerText + ' ';
+					bieuthuc = bieuthuc + ' * ' ;
+				break;
+
+				case (x === '÷'): 
+					hien = hien + ' ÷ ';
+					bieuthuc = bieuthuc + ' / ';
+				break;
+
+				case (x === '%'): 
+					hien = hien + ' ' + document.getElementById(x).innerText + ' ';
+					bieuthuc = bieuthuc + ' *0.01 ';
+				break;
+
+				//loi viet lien so tiep theo -> done
+				//loi dau cham -> done
+				
+				case (x === 'X-sq'): 
+					hien = hien  + document.getElementById(x).innerText.slice(1,2);
+
+				//so am binh phuong  ok
+					bieuthuc = '' + bieuthuc;
+					var tsq;
+					var lastIndexSq1 = bieuthuc.lastIndexOf(' ');
+					var lastIndexSq2 = bieuthuc.length;
+			
+					tsq = bieuthuc.substring((lastIndexSq1+1),lastIndexSq2);
+					var sq = Math.pow(tsq,2)
+					bieuthuc = bieuthuc.substring(0,bieuthuc.length-tsq.length) + ' ' + sq ;
+
+				//bi loi truong hop (a + b)sq
+				break;
+				
+
+				case (x === 'X-sqrt'): 
+					if (hien === '0') {
+						hien = '' + document.getElementById(x).innerText +'(' ;
+						bieuthuc = ''  + 'Math.sqrt(';
+					} else {
+						hien = hien +  document.getElementById(x).innerText + '(';
+				
+						var lastString = bieuthuc.slice(-1);
+
+						var checkNumber = Number(lastString);
+
+						if (typeof(checkNumber) === 'number'  && checkNumber !== NaN) {
+							bieuthuc = bieuthuc + ' * Math.sqrt('
+						}  else {
+							bieuthuc = bieuthuc + 'Math.sqrt(' ; 
+
+						};
+					}; //end else
+
+				break;
+
+
+				//chi giai thua duoc so nguyen thoi
+				case (x === 'X-f'): 
+					hien = hien  + document.getElementById(x).innerText.slice(1,2) + ' ';
+					bieuthuc = bieuthuc;
+					var tf;
+
+					var lastIndexf1 = bieuthuc.lastIndexOf(' ');
+					var lastIndexf2 = bieuthuc.length;
+					tf = bieuthuc.substring((lastIndexf1+1),lastIndexf2);
+					f = factorial(tf);
+					bieuthuc = bieuthuc.substring(0,bieuthuc.length-tf.length) + ' ' + f;
+				break;
+
+
+				// van de ( va can bac 2
+				case (x === "nd1" ): 
+					if (hien === '0') {
+						hien = '' + document.getElementById(x).innerText;
+						bieuthuc = ''  + document.getElementById(x).innerText;
+					} else {
+						hien = hien + document.getElementById(x).innerText;
+
+						var lastString = bieuthuc.slice(-1);
+						var checkNumber = Number(lastString);
+						if (typeof(checkNumber) === 'number' && checkNumber !== NaN) {
+							bieuthuc = bieuthuc + ' * ('
+						}  else {
+							bieuthuc = bieuthuc + '('  
+						};
+					}; //end else
+				break;
+
+				default: 
+				// if: khi bam so lan 2 thi reset phan hien thi.
+					if (hien === '0') {
+						hien = '' + document.getElementById(x).innerText;
+						bieuthuc = ''  + document.getElementById(x).innerText;
+						
+					} else if(hien === ketqua)  
+					{	hien = '' + document.getElementById(x).innerText;
+						bieuthuc = '' + document.getElementById(x).innerText;	
+					} else { 
+						hien = hien + document.getElementById(x).innerText;
+					 	var lastString = bieuthuc.slice(-1); 
+					 		//giai quyet truong hop ngoac cuoi
+						if (lastString === ')' ) {
+								bieuthuc = bieuthuc + ' * ' + document.getElementById(x).innerText;
+							} else { 	
+								bieuthuc = bieuthuc + document.getElementById(x).innerText;
+							}
+				 	} //end else
+
+			}; //end switch
+
+
+
+				document.getElementById('hienthi').innerText = hien;
+				document.getElementById('hienthibieuthuc').innerText = bieuthuc;
+				//xong xoa dong tren
+
+
+
+				
+				//thay lai bieu thuc toan hoc
+
+				//bieuthuc = hien.replace(/x/g,'*').replace(/÷/g,'/').replace(/% /g,'*0.01 '); 	
+
+				//bieuthuc = hien.substring(sq.length + 1) + 'Math.pow('+ sq +',2)';
+				//bieuthuc2 = bieuthuc.substring(sq.length + 1) + 'Math.pow('+ sq +',2)'
+
+			
+		} //end function press
+		
+
+
+	//phim back xoa 1 o ve truoc tuy nhien phan bieu thuc co nhieu case khac
+		function back() {
+			var hienlastString = hien.slice(-1);
+			var checkNumber = Number(hienlastString);
+			var bieuthucLast3String, hienLast3String;
+			hienLast3String = hien.slice(-3);
+			bieuthucLast3String = bieuthuc.slice(-3);
+
+			if ((hienlastString !== ' ') && typeof(checkNumber) === 'number'  )  {
+				hien = hien.slice(0,-1);
+				bieuthuc = bieuthuc.slice(0,-1);
+				} else {
+					switch (true) {
+						//%
+						case (hienLast3String === ' % '):
+						hien = hien.slice(0,-3);
+						bieuthuc = bieuthuc.slice(0,-7);
+						break;
+
+						//sq
+
+						//sqrt
+
+						//ngoac don
+
+						//factorial
+
+						//cong tru nhan chia
+						default: 	
+						hien = hien.slice(0,-3);
+						bieuthuc = bieuthuc.slice(0,-3);
+
+					}; //end switch
+			}; //end else
+
+			document.getElementById('hienthi').innerText = hien;
+			document.getElementById('hienthibieuthuc').innerText = bieuthuc;
+			//xong thay lai dong tren
+		} //end function back
+
+	//phim  c reset het ve 0
+
+		function zero() {
+			hien = '0'; 
+			ketqua = 0;
+			bieuthuc = 0;
+			document.getElementById('hienthi').innerText = hien;
+			document.getElementById('hienthibieuthuc').innerText = bieuthuc;	
+		};
+					
+
+		function ketquaFunction () {
+
+					//ketqua = eval(bieuthuc);
+					try {
+						ketqua = eval(bieuthuc)
+					} catch (err) {
+						ketqua = 'Error.'
+					}; 
+
+					//truong hop ket qua la Error thi phai tra bieu thuc ve 0
+					if (ketqua === 'Error.') { 
+						bieuthuc = '0'
+					} else {
+					bieuthuc = ketqua }
+
+					/*
+					if (bieuthuc.endsWith(' ')) {
+					ketqua = 'Error. Xin nhập đúng biểu thức toán học.'
+					} else {
+					ketqua = eval(bieuthuc)
+					};
+					*/
+					
+					var ketquaText = '' + ketqua;
+					document.getElementById('ketquaText').innerText = ketquaText;
+					hien = ketqua;
+		}
+
+
+
+	 </script>
+
+</body>
+</html>
