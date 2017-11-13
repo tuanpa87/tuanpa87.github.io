@@ -173,8 +173,12 @@ $(document).ready(function(){
 
 	$('.responsive-tabs').responsiveTabs({
 	accordionOn: ['xs'] // xs, sm, md, lg
-});
+	});
 
+	$('.product-detail-small-img > img').on('click',function () {
+	var imgSrc = $(this).attr('src');
+	$('#onClickShow').attr('src',imgSrc);
+	});
 
 });
 

@@ -1529,6 +1529,10 @@ border-bottom: none;
 		padding: 25px;
 	}
 
+	.product-detail-small-img {
+		cursor: pointer;
+	}
+
 	#product-slider {
 		margin-right: 10px;
 		margin-left: 10px;
