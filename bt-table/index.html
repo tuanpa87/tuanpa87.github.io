@@ -1,0 +1,323 @@
+<html>
+<head>
+	<meta charset='utf8'> 
+	<title>Bt Table</title>
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+		<style>
+
+			.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+ 			 background-color: #bebebe;
+			}
+
+			h2 {
+				text-align: center;
+				margin-bottom: 25px;
+			}
+			
+			th{
+				text-align: center;
+			}
+			
+			tbody > tr > td  {
+				text-align: center;
+				vertical-align: middle  !important;   /* Do bootstrap de sau, co class table style:; vertical-align= top nen phai de  !important nay de chen vao */
+			}
+
+			tbody > tr > td:nth-child(3), td:nth-child(4), td:nth-child(5) {
+				text-align: right;
+			} 
+
+			img {
+				width: 100px;
+				height: 100px;
+				margin: auto;
+			}
+
+		</style>
+
+</head>
+
+<body>
+	<div id='wrap' class="container">
+		<h2> Bảng giá điện thoại Samsung tháng 08/2017 </h2>
+
+		<table class="table table-bordered table-hover table-striped">
+			<thead> 
+				<tr> 
+					<th> Ảnh sản phẩm </th>
+					<th id="Th1" onclick="PressToSort(1)" > Tên sản phẩm  <span class="pull-right"> <span class="glyphicon glyphicon-sort" aria-hidden="true"> </span> </span> </th>
+					<th id="Th2" onclick="PressToSort(2)"> Giá (triệu VNĐ)  <span class="pull-right"> <span class="glyphicon glyphicon-sort" aria-hidden="true"> </span> </span> </th> 
+					<th id="Th3" onclick="PressToSort(3)"> Mã sản phẩm  <span class="pull-right"> <span class="glyphicon glyphicon-sort" aria-hidden="true"> </span> </span> </th> 
+					<th id="Th4" onclick="PressToSort(4)"> Tình trạng  <span class="pull-right"> <span class="glyphicon glyphicon-sort" aria-hidden="true"> </span> </span> </th> 
+				</tr> 
+			</thead>
+
+			<tbody>
+				<tr> 
+					<td> <img class='img-responsive' src='img/samsung-galaxy-j1-mini-10-300x300.jpg'>  </td>
+					<td> <span> Galaxy J1 Min </span> </td>
+					<td> 1.69  </td>
+					<td> SS4436 </td>
+					<td> Hết hàng </td>
+				</tr>
+
+				<tr> 
+					<td> <img class='img-responsive' src='img/galaxy-j1-2016-15-300x300.jpg'>  </td>
+					<td> Galaxy J1 (2016) </td>
+					<td> 2.19 </td>
+					<td> C4QIJJ </td>
+					<td> Còn hàng </td>
+				</tr>
+
+				<tr> 
+					<td> <img class='img-responsive' src='img/samsung-galaxy-j2-7-200x200.jpg'>  </td>
+					<td> Galaxy J2 </td>
+					<td> 2.49 </td>
+					<td> O2NNAP </td>
+					<td> Hết hàng </td>
+				</tr>
+
+				<tr> 
+					<td> <img class='img-responsive' src='img/samsung-galaxy-j2-prime-1-300x300.jpg'>  </td>
+					<td> Galaxy J2 Prime </td>
+					<td> 2.69 </td>
+					<td> YPB8J6 </td>
+					<td> Còn hàng </td>
+				</tr>
+
+				<tr> 
+					<td> <img class='img-responsive' src='img/samsung-galaxy-j3-lte-300x300.jpg'> </td>
+					<td> Galaxy J3 LTE </td>
+					<td> 2.99 </td>
+					<td> 9YR555 </td>
+					<td> Hết hàng </td>
+				</tr>
+
+				<tr> 
+					<td> <img class='img-responsive' src='img/samsung-galaxy-j5-2017-1-200x200.jpg'> </td>
+					<td> Galaxy J5 </td>
+					<td>  3.39 </td>
+					<td> YPB8J6 </td>
+					<td> Còn hàng </td>
+				</tr>
+
+				<tr> 
+					<td> <img class='img-responsive' src='img/samsung-galaxy-j5-prime-1-300x300.jpg'> </td>
+					<td> Galaxy J5 Prime </td>
+					<td>  4.49 </td>
+					<td> WV49FT </td>
+					<td> Hết hàng </td>
+				</tr>
+
+				<tr> 
+					<td> <img class='img-responsive' src='img/samsung-galaxy-a3-2017-16-300x300.jpg'> </td>
+					<td> Galaxy A3 (2017) </td>
+					<td>  4.99 </td>
+					<td> R4XCMW </td>
+					<td> Còn hàng </td>
+				</tr>
+
+				<tr> 
+					<td> <img class='img-responsive' src='img/samsung-galaxy-a5-2016-5-300x300.jpg'> </td>
+					<td> Galaxy A5 (2016) </td>
+					<td>  5.79  </td>
+					<td> ZIVQEP </td>
+					<td> Hết hàng </td>
+				</tr>
+
+				<tr> 
+					<td> <img class='img-responsive' src='img/samsung-galaxy-j7-prime-9-300x300.jpg'> </td>
+					<td> Galaxy J7 Prime </td>
+					<td>  5.99 </td>
+					<td> YSYXQV</td>
+					<td> Còn hàng </td>
+				</tr>
+
+				<tr> 
+					<td> <img class='img-responsive' src='img/samsung-galaxy-j7-pro-8-300x300.jpg'> </td>
+					<td> Galaxy J7 Pro </td>
+					<td>  6.99 </td>
+					<td> 74LXHD </td>
+					<td> Hết hàng </td>
+				</tr>
+
+				<tr> 
+					<td> <img class='img-responsive' src='img/samsung-galaxy-a7-2016-19-300x300.jpg'> </td>
+					<td> Galaxy A7 (2016) </td>
+					<td>  7.49 </td>
+					<td> 9YR555 </td>
+					<td> Còn hàng </td>
+				</tr>
+
+				<tr> 
+					<td> <img class='img-responsive' src='img/samsung-galaxy-a5-2017-300x300.jpg'> </td>
+					<td> Galaxy A5 (2017) </td>
+					<td>   7.99 </td>
+					<td> LO1SJE </td>
+					<td> Hết hàng </td>
+				</tr>
+
+				<tr> 
+					<td> <img class='img-responsive' src='img/samsung-galaxy-a7-2017-11-300x300.jpg'> </td>
+					<td> Galaxy A7 (2017) </td>
+					<td>  9.99 </td>
+					<td> 71D926 </td>
+					<td> Còn hàng </td>
+				</tr>
+
+				<tr> 
+					<td> <img class='img-responsive' src='img/samsung-galaxy-a9-pro-300x300.jpg'> </td>
+					<td> Galaxy A9 Pro </td>
+					<td>   10.49</td>
+					<td> E5FGV5 </td>
+					<td> Hết hàng </td>
+				</tr>
+
+				<tr> 
+					<td> <img class='img-responsive' src='img/samsung-galaxy-note-5-14-300x300.jpg'> </td>
+					<td> Galaxy Note 5 </td>
+					<td>  10.39 </td>
+					<td> VWALDY </td>
+					<td> Còn hàng </td>
+				</tr>
+
+				<tr> 
+					<td> <img class='img-responsive' src='img/samsung-galaxy-c9-pro2-300x300.jpg'> </td>
+					<td> Galaxy C9 Pro </td>
+					<td>  11.49 </td>
+					<td> AMCCXW </td>
+					<td> Hết hàng </td>
+				</tr>
+
+				<tr> 
+					<td> <img class='img-responsive' src='img/samsung-galaxy-s7-16-200x200.jpg'> </td>
+					<td> Galaxy S7 </td>
+					<td>   12.99  </td>
+					<td> RD94SB </td>
+					<td> Còn hàng </td>
+				</tr>
+
+				<tr> 
+					<td> <img class='img-responsive' src='img/samsung-galaxy-s7-edge-blue-coral-edition-200x200.jpg'> </td>
+					<td> Galaxy S7 Edge  </td>
+					<td>  15.49  </td>
+					<td> HB14D2</td>
+					<td> Hết hàng </td>
+				</tr>
+
+				<tr> 
+					<td> <img class='img-responsive' src='img/samsung-galaxy-s8-4-300x300.jpg'> </td>
+					<td> Galaxy S8 </td>
+					<td>    18.49 </td>
+					<td> 23F19K </td>
+					<td> Còn hàng </td>
+				</tr>
+
+				<tr> 
+					<td> <img class='img-responsive' src='img/samsung-galaxy-s8-plus-20-300x300.jpg'> </td>
+					<td> Galaxy S8 Plus </td>
+					<td>     20.49 </td>
+					<td> 02GDXP </td>
+					<td> Còn hàng </td>
+				</tr>
+			</tbody>
+
+		</table>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<!-- <script src="js/bootstrap.min.js"></script> -->
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	<script> 
+		//function compare ca so va chu de dung cho ham sort 
+		function compare(thIndex) { //thIndex la so thu tu cua th - dong thieu chi
+			return function(a, b) { //a b la  parameter cua function so sanh tung thanh phan, co the thay doi tieu chi so sanh (la gi do cua a va b) bang them bien moi dua tren a va b
+				var valA = $(a).children("td").eq(thIndex).html(); //seclect row -> td,  eq = equal to, thIndex tra ve so thu tu, o day la cua o trong cot
+				var valB = $(b).children("td").eq(thIndex).html(); //select row ->  td, eq = equal to, thIndex tra ve so thu tu, o day la cua o trong cot
+				return $.isNumeric(valA) && $.isNumeric(valB) ? valA - valB : valA.localeCompare(valB); //localCompare hoat dong tong tu (a - b) trong truong hop nay la (ValA - ValB) nhung dung cho string
+				
+			}
+		}
+
+
+		//khai bao rowsBeforeSort de tra ve gia tri ban dau
+		var rowsBeforeSort = $('table > tbody > tr').toArray();
+
+		function PressToSort(thIndex) {
+			//doan nay thuc hien sorting 			
+
+			//select tat ca row trong bang ve thanh array sau do chay, sort lai array rows
+			var rows = $('table > tbody > tr').toArray().sort(compare(thIndex)) //compare($('th').index()) doan nay chay function compare o tren voi parameter la index cua th (dong tieu chi dau tien)
+
+			//phai reset icon cac dong khac truoc
+			$('th:not(#Th' + thIndex +')' ).children().children().removeClass('glyphicon-sort-by-alphabet').removeClass('glyphicon-sort-by-alphabet-alt').removeClass('glyphicon-sort-by-order').removeClass('glyphicon-sort-by-order-alt').addClass('glyphicon-sort');
+
+			var SortIcon = $('#Th' + thIndex).children().children()
+
+			// thuc hien ascending cho lan click 1, descending cho lan click 2, tra ve ban dau lan thu 3
+			if (thIndex !== 2) {
+
+				if (SortIcon.hasClass('glyphicon-sort')) { 
+					//Fill array theo so thu da sort, bang cach append tung thanh phan: row[i] 
+					for (var i = 0; i < rows.length; i++) {
+						$('table>tbody').append(rows[i]);
+					}
+
+					//doan nay se thay doi bieu tuong sort
+					SortIcon.removeClass('glyphicon-sort').addClass('glyphicon-sort-by-alphabet')
+
+				} else if (SortIcon.hasClass('glyphicon-sort-by-alphabet')) {
+					rows = rows.reverse();
+					for (var i = 0; i < rows.length; i++) {
+						$('table>tbody').append(rows[i]);
+					}
+					SortIcon.removeClass('glyphicon-sort-by-alphabet').addClass('glyphicon-sort-by-alphabet-alt')
+
+				} else {
+					for (var i = 0; i < rows.length; i++) {
+						$('table>tbody').append(rowsBeforeSort[i]);
+					SortIcon.removeClass('glyphicon-sort-by-alphabet-alt').addClass('glyphicon-sort')
+					}
+				}
+
+			} else {
+			//bo sung truong hop sap so thIndex = 2
+
+					if (SortIcon.hasClass('glyphicon-sort')) { 
+					//Fill array theo so thu da sort, bang cach append tung thanh phan: row[i] 
+					for (var i = 0; i < rows.length; i++) {
+						$('table>tbody').append(rows[i]);
+					}
+
+					//doan nay se thay doi bieu tuong sort
+					SortIcon.removeClass('glyphicon-sort').addClass('glyphicon-sort-by-order')
+
+				} else if (SortIcon.hasClass('glyphicon-sort-by-order')) {
+					rows = rows.reverse();
+					for (var i = 0; i < rows.length; i++) {
+						$('table>tbody').append(rows[i]);
+					}
+					SortIcon.removeClass('glyphicon-sort-by-order').addClass('glyphicon-sort-by-order-alt')
+
+				} else {
+					for (var i = 0; i < rows.length; i++) {
+						$('table>tbody').append(rowsBeforeSort[i]);
+					SortIcon.removeClass('glyphicon-sort-by-order-alt').addClass('glyphicon-sort')
+					}
+				}	
+
+			} //end thIndex = 2
+
+		} //end function PressToSort	
+
+	</script>
+</body>
+</html>

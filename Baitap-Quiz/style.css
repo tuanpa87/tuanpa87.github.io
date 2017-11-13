@@ -1,0 +1,124 @@
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background-image:  url("img/background.jpg");
+ 	background-repeat: no-repeat;
+ 	background-attachment: fixed;
+ 	background-position: center; 
+}
+.page {
+	max-height: 100%;
+	max-width: 1000px;
+	margin: 0 auto;
+	text-align: center;
+	display: flex;
+	display: -webkit- flex;
+	flex-flow: row wrap; 
+/*	The flex-flow property is a shorthand property for the flex-direction and the flex-wrap properties*/
+}
+
+.page > * {
+	-webkit- flex: 1 100%;
+	flex: 1 100%;
+}
+
+header {
+	/*background: white;*/
+	color: grey;
+	padding: 1em;
+}
+
+footer {
+	color: white;
+/*	background: white;*/
+	padding: 1em;
+}
+
+h1{ text-align: center;
+	color: #005555;
+	font-size: 2.5em; }
+
+h2 {
+	text-align: left;
+	text-indent: 25px;
+	font-family: Arial;
+	color: #005555;
+	font-size: 2em;
+	margin-bottom: 10px;
+}
+
+.content {
+	height: 450px;
+	display: flex;
+	display: -webkit- flex;
+	flex-flow: row wrap; 
+	/*background: white;*/
+	align-items: center; 
+	justify-content: center;
+}
+
+
+/*doan nay lam kich thuoc*/
+
+#question {
+	/*height: 80px;*/
+	flex: 1 100%;
+	height: 100px;
+	margin: 0;
+	padding: 10px;
+	background: red;
+	display: flex;
+	display: -webkit- flex;
+	justify-content: center;
+	align-items: center; 
+}
+
+
+
+/*doan nay lam kich thuoc*/
+#A, #B, #c, #D {
+	text-indent: 20px;
+	height: 80px;
+	margin: 25px;
+	margin-top: 0;
+	margin-bottom: 0;
+	flex: 1 35%;
+	background: blue;
+	display: flex;
+	display: -webkit- flex;
+	justify-content: space-between;
+	align-items: center; 
+}
+
+/*doan nay trinh bay mau sac*/
+
+
+#question, #A, #B, #c, #D {
+	
+	  background: #80e7f2;
+	  background-image: -webkit-linear-gradient(top, #80e7f2, #3a7ea6);
+	  background-image: linear-gradient(to bottom, #80e7f2, #3a7ea6);
+	  -webkit-border-radius: 30;
+	  border-radius: 30px;
+	  font-family: Arial;
+	 color: #005555;
+	  font-size: 30px;
+	  padding: 10px 20px 10px 20px;
+	  text-decoration: none;
+}
+
+#question:hover, #A:hover, #B:hover, #C:hover, #D:hover {
+background: #46aff0;
+background-image: linear-gradient(to bottom, #3cf6fc, #3498db);
+text-decoration: none}
+
+div > img {
+	visibility: hidden;
+	opacity: 0.7;
+	float: right;
+}
+
+

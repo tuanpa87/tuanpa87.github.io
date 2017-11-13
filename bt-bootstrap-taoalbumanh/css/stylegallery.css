@@ -1,0 +1,30 @@
+* {box-sizing: border-box}
+
+
+
+.wrap {
+	overflow: auto;
+	margin:auto;
+}
+
+.album {
+	float:left;
+
+}
+
+
+
+.anh1, .anh2, .anh3, .anh4,.anh5, .anh6, .anh7, .anh8, .anh9
+{
+		max-width:30%;
+		border:1px solid lightgreen;
+		background-color: white;
+		padding: 10px;
+		margin-right: 10px;
+		margin-top: 10px;
+}
+
+
+
+.anh1:hover, .anh2:hover, .anh3:hover, .anh4:hover,.anh5:hover, .anh6:hover, .anh7:hover, .anh8:hover, .anh9:hover{
+}

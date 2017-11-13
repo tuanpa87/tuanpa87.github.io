@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 
@@ -15,6 +16,9 @@ $(document).ready(function(){
 	});
 
 
+=======
+$(document).ready(function(){
+>>>>>>> b0e743949ff3cb891fadf58cc8e279530295309c
 	$('#product-slider').owlCarousel({
 		loop: true,
 		autoplay: true,
@@ -56,7 +60,11 @@ $(document).ready(function(){
 			425:{
 				items:1
 			},
+<<<<<<< HEAD
 
+=======
+			
+>>>>>>> b0e743949ff3cb891fadf58cc8e279530295309c
 			768:{
 				items:2
 			},
@@ -66,7 +74,10 @@ $(document).ready(function(){
 		}
 	})
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> b0e743949ff3cb891fadf58cc8e279530295309c
 	$('#home-newproduct-slider').owlCarousel({
 		loop: true,
 		autoplay: true,
@@ -83,7 +94,11 @@ $(document).ready(function(){
 			425:{
 				items:2
 			},
+<<<<<<< HEAD
 
+=======
+			
+>>>>>>> b0e743949ff3cb891fadf58cc8e279530295309c
 			768:{
 				items:3
 			},
@@ -95,7 +110,10 @@ $(document).ready(function(){
 		}
 	})
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> b0e743949ff3cb891fadf58cc8e279530295309c
 	$('#promotion-slider').owlCarousel({
 		loop: true,
 		autoplay: true,
@@ -112,7 +130,11 @@ $(document).ready(function(){
 			425:{
 				items:2
 			},
+<<<<<<< HEAD
 
+=======
+			
+>>>>>>> b0e743949ff3cb891fadf58cc8e279530295309c
 			768:{
 				items:3
 			},
@@ -125,6 +147,7 @@ $(document).ready(function(){
 	})
 
 
+<<<<<<< HEAD
 	var eventFired = 0;
 
 	if ($(window).width() < 768) {
@@ -158,6 +181,8 @@ $(document).ready(function(){
 	accordionOn: ['xs'] // xs, sm, md, lg
 	});
 
+=======
+>>>>>>> b0e743949ff3cb891fadf58cc8e279530295309c
 
 });
 
