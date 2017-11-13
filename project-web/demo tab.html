@@ -1,0 +1,42 @@
+<html> 
+<head> 
+	<meta charset="utf8"> 
+	<title> Chi tiết sản phẩm</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=Oswald|Roboto+Condensed&amp;subset=vietnamese" rel="stylesheet"> 
+	<link href="libraries/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="libraries//bootstrap-responsive-tabs.css">
+
+</head>
+<body>
+	<ul class="nav nav-tabs responsive-tabs">
+		<li class="active"><a href="#home1">Home</a></li>
+		<li><a href="#profile1">Profile</a></li>
+	</ul>
+
+	<div class="tab-content">
+		<div class="tab-pane active" id="home1">
+			<p>1. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+		</div>
+
+		<div class="tab-pane" id="profile1">
+			<p>2. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+		</div>
+	</div>
+
+
+	<script src="libraries/jquery-3.2.1.min.js"></script>
+	<script src="libraries/bootstrap.min.js"></script>
+	<script src="libraries/jquery.bootstrap-responsive-tabs.min.js"></script>
+	<script> 
+		$('.responsive-tabs').responsiveTabs({
+		  accordionOn: ['xs'] // xs, sm, md, lg
+		});	
+
+	</script>
+
+
+
+</body>
+</html>
