@@ -1,4 +1,37 @@
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("backTop").style.display = "block";
+    } else {
+        document.getElementById("backTop").style.display = "none";
+    }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+    document.body.scrollTop = 0; // For Chrome, Safari and Opera 
+    document.documentElement.scrollTop = 0; // For IE and Firefox
+}
+
+
+
 $(document).ready(function(){
+	// Javascript to enable link to tab
+	var hash = document.location.hash;
+	var prefix = "tab_";
+	if (hash) {
+		$('.nav-tabs a[href="'+hash.replace(prefix,"")+'"]').tab('show');
+	} 
+
+	// Change hash for page-reload
+	$('.nav-tabs a').on('shown.bs.tab', function (e) {
+		window.location.hash = e.target.hash.replace("#", "#" + prefix);
+	});
+
+
 	$('#product-slider').owlCarousel({
 		loop: true,
 		autoplay: true,
@@ -40,7 +73,7 @@ $(document).ready(function(){
 			425:{
 				items:1
 			},
-			
+
 			768:{
 				items:2
 			},
@@ -49,6 +82,7 @@ $(document).ready(function(){
 			}
 		}
 	})
+
 
 	$('#home-newproduct-slider').owlCarousel({
 		loop: true,
@@ -66,7 +100,7 @@ $(document).ready(function(){
 			425:{
 				items:2
 			},
-			
+
 			768:{
 				items:3
 			},
@@ -77,6 +111,7 @@ $(document).ready(function(){
 
 		}
 	})
+
 
 	$('#promotion-slider').owlCarousel({
 		loop: true,
@@ -94,7 +129,7 @@ $(document).ready(function(){
 			425:{
 				items:2
 			},
-			
+
 			768:{
 				items:3
 			},
@@ -107,8 +142,46 @@ $(document).ready(function(){
 	})
 
 
+	var eventFired = 0;
+
+	if ($(window).width() < 768) {
+		$("#product-detail-nav-tab").addClass("responsive-tabs")
+		$("#cs-nav-tab").addClass("responsive-tabs")
+
+	}
+	else {
+		$("#product-detail-nav-tab").removeClass("responsive-tabs");
+		$("#cs-nav-tab").removeClass("responsive-tabs")
+		eventFired = 1;
+	}
+
+
+
+	$(window).on('resize', function() {
+		if (!eventFired) {
+			if ($(window).width() < 768) {
+				$("#product-detail-nav-tab").addClass("responsive-tabs")
+				$("#cs-nav-tab").addClass("responsive-tabs")
+
+			} else {
+				$("#product-detail-nav-tab").removeClass("responsive-tabs")
+				$("#cs-nav-tab").removeClass("responsive-tabs")
+			}
+		}
+	});
+
+
+	$('.responsive-tabs').responsiveTabs({
+	accordionOn: ['xs'] // xs, sm, md, lg
+	});
+
+	$('.product-detail-small-img > img').on('click',function () {
+	var imgSrc = $(this).attr('src');
+	$('#onClickShow').attr('src',imgSrc);
+	});
 
 });
+
 
 
 
