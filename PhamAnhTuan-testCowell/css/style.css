@@ -35,7 +35,7 @@ input, label {
 }
 
 input, input:focus{
-    outline: none;
+	outline: none;
 }
 
 .clearfix::after {
@@ -206,7 +206,7 @@ margin-left: -170px;*/
 	color: #000;
 	background-color: #ffe400;
 	cursor: pointer;
-	 border: none;
+	border: none;
 	font-weight: 700;
 }
 
@@ -257,6 +257,11 @@ margin-left: -170px;*/
 	margin-bottom: 32px;
 }
 
+
+
+.left-side {
+	display: none;
+}
 
 .left1 {
 	width: 70%;
@@ -577,6 +582,10 @@ footer .footer-big-box {
 	#content {
 		overflow: auto;
 		margin: 0 auto;
+	}
+
+	.left-side {
+		display: block;
 	}
 
 	.left-side {
