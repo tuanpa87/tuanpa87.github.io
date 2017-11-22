@@ -1222,6 +1222,11 @@ section:nth-last-child(1) {
 	/* border-bottom: 1px solid #16A085;*/
 }
 
+.menu-box ul> li:hover {
+  color: #34AC94;
+}
+
+
 /*.menu-box ul> li:nth-last-child(1) {
 border-bottom: none;
 }*/
