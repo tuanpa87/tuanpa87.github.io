@@ -5,6 +5,7 @@ class Header extends Component {
         return ( //JSX
             <div>
               <h1>Header</h1>
+              <h1><i className="fab fa-500px"></i></h1>
             </div>
         );
     }
