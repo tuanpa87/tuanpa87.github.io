@@ -18,6 +18,8 @@ class App extends Component {
     this.onSettingDefault = this.onSettingDefault.bind(this)
   }
 
+  //voi state thi khong truyen duoc qua lai giua cac function
+  
   onSetColor(params) {
     //console.log(params)
     this.setState( {
