@@ -11,9 +11,11 @@ class App extends Component {
     super(props);
     this.state = {
       color : 'red',
-      fontSize: 15
+      fontSize: 12
     }
     this.onSetColor = this.onSetColor.bind(this)
+    this.onChangeSize = this.onChangeSize.bind(this)
+    this.onSettingDefault = this.onSettingDefault.bind(this)
   }
 
   onSetColor(params) {
@@ -21,6 +23,26 @@ class App extends Component {
     this.setState( {
       color: params
     })
+  }
+
+  onChangeSize(value) {
+    console.log(value)
+    //8 <= fontSze <= 36
+    if (this.state.fontSize + value >= 8 && this.state.fontSize + value <= 36) {
+      this.setState({
+        fontSize: this.state.fontSize + value
+      })  
+    }
+  }
+
+  onSettingDefault(value) {
+    console.log(value)
+    if(value) {
+      this.setState({
+        color : 'red',
+        fontSize: 12
+      })
+    }
   }
 
   render() {
@@ -32,10 +54,15 @@ class App extends Component {
         </header>
 
         <div className="container mt-50">
-          <ColorPicker color={this.state.color} onReceiveColor={this.onSetColor}/>
-          <SizeSetting />
-          <Reset />
-          <Result color ={this.state.color} />
+          {/* //truyen vao props de chuyen sang components con*/}
+          <ColorPicker color={this.state.color} onReceiveColor={this.onSetColor}/> 
+          {/* //truyen vao props de chuyen sang components con*/}
+          <SizeSetting 
+          fontSize={this.state.fontSize}
+          onChangeSize={this.onChangeSize}
+          />
+          <Reset  onSettingDefault = {this.onSettingDefault} />
+          <Result color ={this.state.color} fontSize={this.state.fontSize}/>
         </div>
       </div>
     );

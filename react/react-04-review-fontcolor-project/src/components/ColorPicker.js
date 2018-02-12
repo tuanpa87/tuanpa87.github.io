@@ -14,6 +14,7 @@ class ColorPicker extends Component {
         };
     }
 
+    
     setActiveColor(color) {
         //console.log(color)
         this.props.onReceiveColor(color);
@@ -24,7 +25,7 @@ class ColorPicker extends Component {
             return <span 
                     key={index} 
                     style={this.showcolor(color)} 
-                    className={this.props.color === color ? 'active' :''}
+                    className={this.props.color === color ? 'active' :''} //set active span
                     onClick={ () => this.setActiveColor(color) }
                     > </span>
         })
