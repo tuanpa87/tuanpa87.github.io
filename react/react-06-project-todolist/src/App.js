@@ -23,6 +23,7 @@ class App extends Component {
     }
   }
 
+  /*
   onGenarateData = () => {
     var tasks = [
       {
@@ -42,13 +43,12 @@ class App extends Component {
       }
     ]
     //console.log(tasks);
-
     this.setState({
       tasks: tasks
     })
-
     localStorage.setItem('tasks', JSON.stringify(tasks))
   }
+  */
 
   s4() {
     return Math.floor((1 + Math.random()) * 0x100000).toString(16).substring(1);
@@ -71,11 +71,20 @@ class App extends Component {
     })
   }
 
+  onSubmit = (data) => {
+    console.log(data)
+    data.id = this.generateID();
+    var {tasks} = this.state; //tasks =  this.state.tasks
+    tasks.push(data);
+    this.setState({
+      tasks: tasks
+    })
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }
 
-  
   render() {
     var { tasks, isDisplayForm } = this.state; // ~ var tasks = this.state.tasks
-    var elmTaskForm = (isDisplayForm) ? <TaskForm onCloseForm ={this.onCloseForm}/> : ''
+    var elmTaskForm = (isDisplayForm) ? <TaskForm onCloseForm ={this.onCloseForm} onSubmit={this.onSubmit}/> : ''
     return (
       <div className="App">
         <div className="container">
@@ -96,12 +105,13 @@ class App extends Component {
               >
                 <span className="fa fa-plus mr-5"></span>Thêm Công Việc
               </button>
-              <button
+              {/* <button
                 type="button"
                 className="ml-5 btn btn-danger"
                 onClick={this.onGenarateData}>
                 Generate Data
-              </button>
+              </button> */}
+              
               {/* Search & Sort */}
               <Control />
               <div className="row mt-15">

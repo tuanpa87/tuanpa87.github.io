@@ -17,7 +17,7 @@ class ColorPicker extends Component {
     
     setActiveColor(color) {
         //console.log(color)
-        this.props.onReceiveColor(color);
+        this.props.onReceiveColor(color); //chay function ben ngoai app.js
     }
 
     render() {
