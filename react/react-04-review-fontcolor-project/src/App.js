@@ -6,6 +6,7 @@ import SizeSetting from './components/SizeSetting'
 import Reset from './components/Reset'
 import Result from './components/Result'
 
+
 class App extends Component {
   constructor(props) {
     super(props);
