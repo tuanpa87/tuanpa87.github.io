@@ -92,7 +92,7 @@ class App extends Component {
                     <label>Giới tính</label>
                     <select 
                     className="form-control" 
-                    name="stlGender" 
+                    name="sltGender" 
                     value={this.state.sltGender}
                     onChange={this.onHandleChange}>
                       <option value={0} >Nữ</option>
