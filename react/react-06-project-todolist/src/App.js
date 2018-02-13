@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import TaskForm from './components/TaskForm'
-import Control from './components/Control'
+import TaskControl from './components/TaskControl'
 import TaskList from './components/TaskList';
 
 class App extends Component {
@@ -15,7 +15,11 @@ class App extends Component {
         name: '',
         status: -1 
       },
-      keyword: '' //dùng cho chức năng tìm kiếm
+      keyword: '', //dùng cho chức năng tìm kiếm
+      sort: {
+        by: 'name', //default sắp theo tên
+        value: 1 //1 tăng dần -1 giảm dần
+      }
     }
   }
 
@@ -193,7 +197,7 @@ class App extends Component {
   onSearch = (keyword) => {
     console.log(keyword)
     this.setState({
-      keyword: keyword
+      keyword: keyword.toLowerCase()
     })
   }
 
@@ -267,7 +271,7 @@ class App extends Component {
               </button> */}
 
               {/* Search & Sort */}
-              <Control onSearch={this.onSearch} />
+              <TaskControl onSearch={this.onSearch} />
 
               <div className="row mt-15">
                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
