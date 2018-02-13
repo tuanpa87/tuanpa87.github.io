@@ -17,7 +17,6 @@ class TaskItem extends Component {
     }
 
 
-
     render() {
         var { task, index } = this.props
 
