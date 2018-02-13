@@ -9,7 +9,8 @@ class App extends Component {
     super(props);
     this.state = {
       tasks: [], //id: unique, name, status
-      isDisplayForm: false
+      isDisplayForm: false,
+      taskEditing: null
     }
   }
 
@@ -71,13 +72,29 @@ class App extends Component {
     })
   }
 
+  onShowForm = () => {
+    this.setState({
+      isDisplayForm: true
+    })
+  }
+
   onSubmit = (data) => {
     console.log(data)
-    data.id = this.generateID();
     var { tasks } = this.state; //tasks =  this.state.tasks
-    tasks.push(data);
+    if (data.id === '') {
+      //Thêm
+      data.id = this.generateID();
+      tasks.push(data);
+    } else {
+      //Edit
+      var index = this.findIndex(data.id)
+      tasks[index] = data;
+    }
+
+   
     this.setState({
-      tasks: tasks
+      tasks: tasks,
+      taskEditing: null
     })
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }
@@ -90,7 +107,7 @@ class App extends Component {
     if (index !== -1) {
       tasks[index].status = !tasks[index].status
       this.setState({
-        tasks: tasks
+        tasks: tasks,
       })
     }
     localStorage.setItem('tasks', JSON.stringify(tasks));
@@ -121,10 +138,27 @@ class App extends Component {
     this.onCloseForm();
   }
 
+  onUpdate = (id) => {
+    var { tasks } = this.state;
+    var index = this.findIndex(id)
+    console.log(index);
+    var taskEditing = tasks[index]
+    //console.log(taskEditing)
+    if (index !== -1) {
+      this.setState({
+        taskEditing: taskEditing
+      });
+      //console.log(this.state.taskEditing) 
+      //log tren se log lai state cu chua duoc update 
+    }
+    this.onShowForm();
+  }
+
+
 
   render() {
-    var { tasks, isDisplayForm } = this.state; // ~ var tasks = this.state.tasks
-    var elmTaskForm = (isDisplayForm) ? <TaskForm onCloseForm={this.onCloseForm} onSubmit={this.onSubmit} /> : ''
+    var { tasks, isDisplayForm, taskEditing } = this.state; // ~ var tasks = this.state.tasks
+    var elmTaskForm = (isDisplayForm) ? <TaskForm onCloseForm={this.onCloseForm} onSubmit={this.onSubmit} task={taskEditing}/> : ''
     return (
       <div className="App">
         <div className="container">
@@ -163,6 +197,7 @@ class App extends Component {
                     tasks={tasks} 
                     onUpdateStatus={this.onUpdateStatus} 
                     onDelete = {this.onDelete}
+                    onUpdate = {this.onUpdate}
                   />
                 </div>
               </div>
