@@ -192,6 +192,32 @@ class App extends Component {
   render() {
     var { tasks, isDisplayForm, taskEditing, filter } = this.state; // ~ var tasks = this.state.tasks
     console.log(filter)
+
+    //filter task list
+    if (filter) {  
+      //!x will return true for every "falsy" value (empty string, 0, null, false, undefined, NaN) 
+      if(filter.name) { //kiểm tra khác (empty string, 0, null, false, undefined, NaN) 
+       
+        //task nay sẽ render ở chỗ TaskList phía dưới nhé
+        //filter methol js: filter (Test function) trả lại những giá trị thỏa mãn đk của test function
+        tasks = tasks.filter((task) => { //gắn lại task
+          return task.name.toLowerCase().indexOf(filter.name) !== -1
+        }) 
+      }
+
+      //filter theo status
+      tasks = tasks.filter((task) => { //gắn lại task
+        if (filter.status === -1) {
+          return task
+        } else {
+          return task.status === (filter.status === 1 ? true : false)
+            // chuyển lại giá trị 0 1 về true false cho filter.status
+        }
+      })
+
+    }
+
+
     var elmTaskForm = (isDisplayForm) ? <TaskForm 
                                         onCloseForm={this.onCloseForm} 
                                         onSubmit={this.onSubmit} 
