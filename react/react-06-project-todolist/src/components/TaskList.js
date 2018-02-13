@@ -4,9 +4,9 @@ import TaskItem from './TaskItem';
 class TaskList extends Component {
     render() {
         var {tasks} = this.props;
-        var elmTasks = tasks.map((task,index )=> {
+        var elmTasks = tasks.map((task,index )=> { //tạo các TaslItem con từ props truyền vào  
             return <TaskItem 
-                    key={task.id} 
+                    key={task.id} //truyền key duy nhất
                     index={index} 
                     task={task}
                     onUpdateStatus = {this.props.onUpdateStatus}

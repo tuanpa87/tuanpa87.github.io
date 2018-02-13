@@ -10,10 +10,11 @@ class App extends Component {
     this.state = {
       tasks: [], //id: unique, name, status
       isDisplayForm: false,
-      taskEditing: null
+      taskEditing: null //dùng để xác định task đang sửa
     }
   }
 
+  //khi refresh lại trang thì truyển dữ liệu từ local storage vào state
   componentWillMount() {
     //console.log(' componentWillMount goi duoc 1 lan thoi nhe')
     if (localStorage && localStorage.getItem('tasks')) {
@@ -59,9 +60,10 @@ class App extends Component {
     return this.s4() + this.s4() + this.s4() + '-' + this.s4() + this.s4() + this.s4() + this.s4() + this.s4() + this.s4()
   }
 
+  //chức năng thêm
   onToogleForm = () => {
     if (this.state.isDisplayForm && this.state.taskEditing !== null) {
-      //dang mo cua so cap nhap 
+      //khi dang mo form sửa
       this.setState({
         isDisplayForm: true,
         taskEditing: null
@@ -88,20 +90,22 @@ class App extends Component {
     })
   }
 
+  //submit task khi thêm hoặc sửa
+  //truyền vào state của data = state của component TaskForm 
   onSubmit = (data) => {
     console.log(data)
     var { tasks } = this.state; //tasks =  this.state.tasks
     if (data.id === '') {
-      //Thêm
+      //Thêm vào data
       data.id = this.generateID();
       tasks.push(data);
     } else {
-      //Edit
+      //Edit task: thay lại giá trị task =  data
       var index = this.findIndex(data.id)
       tasks[index] = data;
     }
 
-   
+    //xong rồi phải set lại state của App
     this.setState({
       tasks: tasks,
       taskEditing: null
@@ -109,6 +113,8 @@ class App extends Component {
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }
 
+
+  //chức năng cập nhật trạng thái
   onUpdateStatus = (id) => {
     var { tasks } = this.state;
     console.log(id);
@@ -134,6 +140,7 @@ class App extends Component {
     return result
   }
 
+  //chức năng xóa
   onDelete = (id) => {
     var { tasks } = this.state;
     var index = this.findIndex(id)
@@ -148,6 +155,7 @@ class App extends Component {
     this.onCloseForm();
   }
 
+  //chức năng sửa task
   onUpdate = (id) => {
     var { tasks } = this.state;
     var index = this.findIndex(id)
@@ -156,7 +164,7 @@ class App extends Component {
     //console.log(taskEditing)
     if (index !== -1) {
       this.setState({
-        taskEditing: taskEditing
+        taskEditing: taskEditing 
       });
       //console.log(this.state.taskEditing) 
       //log tren se log lai state cu chua duoc update 
@@ -168,7 +176,11 @@ class App extends Component {
 
   render() {
     var { tasks, isDisplayForm, taskEditing } = this.state; // ~ var tasks = this.state.tasks
-    var elmTaskForm = (isDisplayForm) ? <TaskForm onCloseForm={this.onCloseForm} onSubmit={this.onSubmit} task={taskEditing}/> : ''
+    var elmTaskForm = (isDisplayForm) ? <TaskForm 
+                                        onCloseForm={this.onCloseForm} 
+                                        onSubmit={this.onSubmit} 
+                                        task={taskEditing}/>  //truyền prop này để sửa task 
+                                      : ''
     return (
       <div className="App">
         <div className="container">
@@ -204,7 +216,7 @@ class App extends Component {
                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                   {/* List */}
                   <TaskList 
-                    tasks={tasks} 
+                    tasks={tasks}  //dùng props truyền state vào component tasklist
                     onUpdateStatus={this.onUpdateStatus} 
                     onDelete = {this.onDelete}
                     onUpdate = {this.onUpdate}

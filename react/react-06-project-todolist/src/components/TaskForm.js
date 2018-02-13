@@ -4,34 +4,37 @@ class TaskForm extends Component {
 
     constructor (props) {
         super(props);
-        this.state = {
+        this.state = { //state này để lưu trữ giá trị của form 
             id: '',
             name: '',
             status: false,
         }
     }
 
+    //life cycle: nhận lại prop task = state.taskEditing từ ngoài component app
     componentWillMount() {
         console.log('componentWillMount: goi duoc 1 lan dau')
         if(this.props.task) {
-            this.setState ({
+            this.setState ({ //set lại state của component này (TaskForm)
                 id: this.props.task.id,
                 name: this.props.task.name,
                 status: this.props.task.status
             })
-        }
+        }  //sửa cũng qua function onChange -> onSubmit 
     }
 
+    //life cycle: thay đổi state khi thêm <=> sửa
     componentWillReceiveProps(nextProps) {
         console.log('componentWillReceiveProps:')
-        console.log(nextProps)
-        if(nextProps && nextProps.task) {
+        console.log(nextProps) //nextProps: nhận lại prop task = state.taskEditing  khi thay đổi thêm <=> sửa  
+        if(nextProps && nextProps.task) { //khi sửa thì có state.taskEditing tức là cũng có nextProps.task 
+            console.log('thêm => sửa')
             this.setState ({
                 id: nextProps.task.id,
                 name: nextProps.task.name,
                 status: nextProps.task.status
             })
-        } else if (!nextProps.task) {
+        } else if (!nextProps.task) { //khi thêm thì state.taskEditing = null tức là nextProps.task = null luôn
             console.log('sửa => thêm') 
             this.setState ({
                 id: '',
@@ -39,37 +42,35 @@ class TaskForm extends Component {
                 status: false,
             })
         }
-
-        
-
     }
 
     onCloseForm = () => {
         this.props.onCloseForm(); 
     }
 
-    onChange = (event) => {
-        var target = event.target
+    onChange = (event) => { 
+        var target = event.target;
         var name = target.name;
         var value = target.value
         if (name === 'status') {
             value = target.value === 'true' ? true : false
         };
         this.setState({
-            [name]: value
+            [name]: value //set lại state Form
         });
     }
 
     onSubmit = (e) => {
         e.preventDefault();
         console.log(this.state)
-        this.props.onSubmit(this.state) //chay function ben ngoai app.js
+        this.props.onSubmit(this.state) //chay function ben ngoai app.js (truyền vào giá trị của state lưu giá trị form ở trên)
+
         //Submit xong phai clear va close form
         this.onClear();
         this.onCloseForm();
-
     }
 
+    //chức năng hủy bỏ khi nhập form
     onClear = () => {
         this.setState({
             name: '',
