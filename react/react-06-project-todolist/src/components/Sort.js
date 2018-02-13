@@ -42,7 +42,7 @@ class Sort extends Component {
                     aria-labelledby="dropdownMenu1" 
                     style={this.state.elmStyle}
                     > 
-                    {/* set style in react style - {element's style object} */}
+                    {/* set style in react: style = {element's style object} */}
                     {/* style={{display: 'block', background: 'red'}} */}
 
                 
