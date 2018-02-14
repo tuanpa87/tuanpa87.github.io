@@ -3,6 +3,7 @@ import './App.css';
 import TaskForm from './components/TaskForm'
 import TaskControl from './components/TaskControl'
 import TaskList from './components/TaskList';
+import { findIndex, filter } from 'lodash'
 
 class App extends Component {
   constructor(props) {
@@ -11,10 +12,10 @@ class App extends Component {
       tasks: [], //id: unique, name, status
       isDisplayForm: false,
       taskEditing: null, //dùng để xác định task đang sửa
-      filter: { //dung de filter form TaskList
-        name: '',
-        status: -1 
-      },
+     
+      filterName: '',  //dung de filter form TaskList
+      filterStatus: -1, 
+
       keyword: '', //dùng cho chức năng tìm kiếm
       sortBy: 'name',
       sortValue: 1
@@ -31,33 +32,6 @@ class App extends Component {
       })
     }
   }
-
-  /*
-  onGenarateData = () => {
-    var tasks = [
-      {
-        id: this.generateID(),
-        name: 'Học React',
-        status: true
-      },
-      {
-        id: this.generateID(),
-        name: 'Ăn cơm',
-        status: false
-      },
-      {
-        id: this.generateID(),
-        name: 'Ngủ',
-        status: true
-      }
-    ]
-    //console.log(tasks);
-    this.setState({
-      tasks: tasks
-    })
-    localStorage.setItem('tasks', JSON.stringify(tasks))
-  }
-  */
 
   s4() {
     return Math.floor((1 + Math.random()) * 0x100000).toString(16).substring(1);
@@ -125,7 +99,10 @@ class App extends Component {
   onUpdateStatus = (id) => {
     var { tasks } = this.state;
     console.log(id);
-    var index = this.findIndex(id)
+    //var index = this.findIndex(id)
+    var index = findIndex(tasks, (task) => {
+      return task.id === id;
+    })
     console.log(index);
     if (index !== -1) {
       tasks[index].status = !tasks[index].status
@@ -134,17 +111,6 @@ class App extends Component {
       })
     }
     localStorage.setItem('tasks', JSON.stringify(tasks));
-  }
-
-  findIndex = (id) => {
-    var result = -1;
-    var { tasks } = this.state;
-    tasks.forEach((task, index) => {
-      if (task.id === id) {
-        result = index;
-      }
-    })
-    return result
   }
 
   //chức năng xóa
@@ -184,10 +150,8 @@ class App extends Component {
     filterStatus = parseInt(filterStatus, 10)
     //console.log(typeof filterStatus)
     this.setState ({
-      filter: {
-        name: filterName.toLowerCase(),
-        status: filterStatus
-      }
+      filterName: filterName.toLowerCase(),
+      filterStatus: filterStatus
     })
   }
 
@@ -211,34 +175,31 @@ class App extends Component {
 
   render() {
     var { tasks, isDisplayForm, taskEditing } = this.state; // ~ var tasks = this.state.tasks
-    var {filter }  = this.state; 
+    var {filterName, filterStatus }  = this.state; 
     //console.log(filter)
     var { keyword } = this.state; 
     var {sortBy, sortValue} = this.state
 
-    //filter task list
-    if (filter) {  
+
+
       //!x will return true for every "falsy" value (empty string, 0, null, false, undefined, NaN) 
-      if(filter.name) { //kiểm tra khác (empty string, 0, null, false, undefined, NaN) 
-       
-        //task nay sẽ render ở chỗ TaskList phía dưới nhé
-        //filter methol js: filter (Test function) trả lại những giá trị thỏa mãn đk của test function
-        tasks = tasks.filter((task) => { //gắn lại task
-          return task.name.toLowerCase().indexOf(filter.name) !== -1
+      if(filterName) { //kiểm tra khác (empty string, 0, null, false, undefined, NaN) 
+        //using lodash filter methol 
+        tasks = filter(tasks, (task) => { //gắn lại task
+          return task.name.toLowerCase().indexOf(filterName) !== -1
         }) 
       }
 
-      //filter theo status
-      tasks = tasks.filter((task) => { //gắn lại task
-        if (filter.status === -1) {
-          return task
-        } else {
-          return task.status === (filter.status === 1 ? true : false)
-            // chuyển lại giá trị 0 1 về true false cho filter.status
-        }
-      })
+        //filter theo status 
+          //using lodash filter methol 
+      if (filterStatus !== -1) {
+        tasks = filter(tasks , (task) => {
+          return task.status === (filterStatus === 1 ? true : false) 
+            // chuyển lại giá trị 0 1 về true false cho filterStatus
+        }) 
+      }
 
-    }
+
     if (sortBy === 'name') {
       tasks.sort((a, b) => {
         if (a.name > b.name) return sortValue;  // cai nao return ve 1 thi thuc hien cai do
@@ -252,14 +213,13 @@ class App extends Component {
         else return 0
       })
     }
- 
-    
-    //chuc nang tim kiem
-    if (keyword) {
-      tasks = tasks.filter((task) => { //gắn lại task
-        return task.name.toLowerCase().indexOf(keyword) !== -1
-      }) 
-    }
+
+
+    //chuc nang tim kiem using lodash
+    tasks = filter(tasks, (task) => {
+      return task.name.toLowerCase().indexOf(keyword) !== -1
+    })
+
 
     var elmTaskForm = (isDisplayForm) ? <TaskForm 
                                         onCloseForm={this.onCloseForm} 
