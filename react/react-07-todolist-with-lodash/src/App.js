@@ -116,7 +116,9 @@ class App extends Component {
   //chức năng xóa
   onDelete = (id) => {
     var { tasks } = this.state;
-    var index = this.findIndex(id)
+    var index = findIndex(tasks, (task) => {
+      return task.id === id;
+    })
     console.log(index);
     if (index !== -1) {
       tasks.splice(index, 1 ); 
@@ -131,7 +133,9 @@ class App extends Component {
   //chức năng sửa task
   onUpdate = (id) => {
     var { tasks } = this.state;
-    var index = this.findIndex(id)
+    var index = findIndex(tasks, (task) => {
+      return task.id === id;
+    })
     console.log(index);
     var taskEditing = tasks[index]
     //console.log(taskEditing)

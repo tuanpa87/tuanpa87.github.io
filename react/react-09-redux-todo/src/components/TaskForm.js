@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actions from './../actions' 
 
 class TaskForm extends Component {
 
@@ -12,37 +14,37 @@ class TaskForm extends Component {
     }
 
     //life cycle: nhận lại prop task = state.taskEditing từ ngoài component app
-    componentWillMount() {
-        console.log('componentWillMount: goi duoc 1 lan dau')
-        if(this.props.task) {
-            this.setState ({ //set lại state của component này (TaskForm)
-                id: this.props.task.id,
-                name: this.props.task.name,
-                status: this.props.task.status
-            })
-        }  //sửa cũng qua function onChange -> onSubmit 
-    }
+    // componentWillMount() {
+    //     console.log('componentWillMount: goi duoc 1 lan dau')
+    //     if(this.props.task) {
+    //         this.setState ({ //set lại state của component này (TaskForm)
+    //             id: this.props.task.id,
+    //             name: this.props.task.name,
+    //             status: this.props.task.status
+    //         })
+    //     }  //sửa cũng qua function onChange -> onSubmit 
+    // }
 
-    //life cycle: thay đổi state khi thêm <=> sửa
-    componentWillReceiveProps(nextProps) {
-        console.log('componentWillReceiveProps:')
-        console.log(nextProps) //nextProps: nhận lại prop task = state.taskEditing  khi thay đổi thêm <=> sửa  
-        if(nextProps && nextProps.task) { //khi sửa thì có state.taskEditing tức là cũng có nextProps.task 
-            console.log('thêm => sửa')
-            this.setState ({
-                id: nextProps.task.id,
-                name: nextProps.task.name,
-                status: nextProps.task.status
-            })
-        } else if (!nextProps.task) { //khi thêm thì state.taskEditing = null tức là nextProps.task = null luôn
-            console.log('sửa => thêm') 
-            this.setState ({
-                id: '',
-                name: '',
-                status: false,
-            })
-        }
-    }
+    // //life cycle: thay đổi state khi thêm <=> sửa
+    // componentWillReceiveProps(nextProps) {
+    //     console.log('componentWillReceiveProps:')
+    //     console.log(nextProps) //nextProps: nhận lại prop task = state.taskEditing  khi thay đổi thêm <=> sửa  
+    //     if(nextProps && nextProps.task) { //khi sửa thì có state.taskEditing tức là cũng có nextProps.task 
+    //         console.log('thêm => sửa')
+    //         this.setState ({
+    //             id: nextProps.task.id,
+    //             name: nextProps.task.name,
+    //             status: nextProps.task.status
+    //         })
+    //     } else if (!nextProps.task) { //khi thêm thì state.taskEditing = null tức là nextProps.task = null luôn
+    //         console.log('sửa => thêm') 
+    //         this.setState ({
+    //             id: '',
+    //             name: '',
+    //             status: false,
+    //         })
+    //     }
+    // }
 
     onCloseForm = () => {
         this.props.onCloseForm(); 
@@ -62,9 +64,8 @@ class TaskForm extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state)
-        this.props.onSubmit(this.state) //chay function ben ngoai app.js (truyền vào giá trị của state lưu giá trị form ở trên)
-
+        //console.log(this.state)
+        this.props.onAddTask(this.state);
         //Submit xong phai clear va close form
         this.onClear();
         this.onCloseForm();
@@ -126,4 +127,20 @@ class TaskForm extends Component {
     }
 }
 
-export default TaskForm;
+const mapStateToProps = (state) => { //chuyen state tu store chung thanh props 
+    return {
+       
+     }
+} 
+
+const mapDispatchToProps = (dispatch, props) => { //chuyen dispatch (action ) thanh tu store props 
+    return {
+        onAddTask: (task) => { //goi onAddTask thi se chuyen action len reducer de thuc thi thay doi trang thai
+            dispatch (actions.addTask(task))
+        }
+    }
+}
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(TaskForm);
