@@ -79,6 +79,4 @@ var findIndex = (tasks ,id) => {
     return result
 }
 
-
-
 export default myReducers

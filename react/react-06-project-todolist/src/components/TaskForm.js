@@ -60,10 +60,11 @@ class TaskForm extends Component {
         });
     }
 
-    onSubmit = (e) => {
+    onSubmit = (e) => { //khi an submit o form thi chay function nay
         e.preventDefault();
         console.log(this.state)
-        this.props.onSubmit(this.state) //chay function ben ngoai app.js (truyền vào giá trị của state lưu giá trị form ở trên)
+        this.props.onSubmit(this.state) //goi lai props onSubmit da truyen vao o ben ngoai
+        //va chay function o ben ngoai app.js (truyền vào giá trị của state lưu giá trị form ở trên)
 
         //Submit xong phai clear va close form
         this.onClear();

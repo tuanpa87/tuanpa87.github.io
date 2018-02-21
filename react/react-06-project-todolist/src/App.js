@@ -263,7 +263,7 @@ class App extends Component {
 
     var elmTaskForm = (isDisplayForm) ? <TaskForm 
                                         onCloseForm={this.onCloseForm} 
-                                        onSubmit={this.onSubmit} 
+                                        onSubmit={this.onSubmit} //truyen vao prop onSubmit de goi ben trong TaskForm, moi lan goi props nay se chay function o tren
                                         task={taskEditing}/>  //truyền prop này để sửa task 
                                       : ''
     return (

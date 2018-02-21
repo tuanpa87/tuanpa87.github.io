@@ -100,7 +100,6 @@ class App extends Component {
     var { keyword } = this.state; 
     var {sortBy, sortValue} = this.state
 
-
     var {isDisplayForm} = this.props
     //filter task list
     // if (filter) {  
@@ -147,9 +146,6 @@ class App extends Component {
     //   }) 
     // }
 
-    var elmTaskForm = (isDisplayForm) ? <TaskForm 
-                                        task={taskEditing}/>  //truyền prop này để sửa task 
-                                      : ''
     return (
       <div className="App">
         <div className="container">
@@ -161,7 +157,7 @@ class App extends Component {
           <div className="row">
             {/* Form */}
             <div className={isDisplayForm ? 'col-xs-4 col-sm-4 col-md-4 col-lg-4' : ''}>
-              {elmTaskForm}
+              <TaskForm task={taskEditing}/>
             </div>
             <div className={isDisplayForm ? 'col-xs-8 col-sm-8 col-md-8 col-lg-8' : 'col-xs-12 col-sm-12 col-md-12 col-lg-12'}>
               <button
@@ -171,12 +167,6 @@ class App extends Component {
               >
                 <span className="fa fa-plus mr-5"></span>Thêm Công Việc
               </button>
-              {/* <button
-                type="button"
-                className="ml-5 btn btn-danger"
-                onClick={this.onGenarateData}>
-                Generate Data
-              </button> */}
 
               {/* Search & Sort */}
               <TaskControl 

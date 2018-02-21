@@ -81,6 +81,7 @@ class TaskForm extends Component {
 
     render() {
         var { id } = this.state
+        if (!this.props.isDisplayForm) return ''; //props.isDisplayForm được convert bên ngoài component App
         return (
             <div className="panel panel-warning">
                 <div className="panel-heading">
@@ -129,7 +130,7 @@ class TaskForm extends Component {
 
 const mapStateToProps = (state) => { //chuyen state tu store chung thanh props 
     return {
-
+        isDisplayForm: state.isDisplayForm
     }
 }
 
@@ -143,7 +144,5 @@ const mapDispatchToProps = (dispatch, props) => { //chuyen dispatch (action ) th
         }
     }
 }
-
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaskForm);
