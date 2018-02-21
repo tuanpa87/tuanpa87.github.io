@@ -35,7 +35,6 @@ class TaskList extends Component {
                     key={task.id} //truyền key duy nhất
                     index={index} 
                     task={task}
-                    onDelete = {this.props.onDelete}
                     onUpdate = {this.props.onUpdate}
                     />
          })

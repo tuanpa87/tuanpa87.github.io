@@ -14,6 +14,8 @@ var initialState = [
 ];
 */
 
+var id = '';
+var index = -1;
 var initialState = (data) ? data : []
 
 var myReducers = (state = initialState, action) => {
@@ -33,8 +35,8 @@ var myReducers = (state = initialState, action) => {
             return [...state] //tranh tham chieu bo nho
 
         case types.UPDATE_STATUS:
-            var id = action.id
-            var index = findIndex(state ,id)
+            id = action.id
+            index = findIndex(state ,id)
             console.log(index)
             //ko cap nhat duoc view
             //state[index].status =! state[index].status
@@ -47,8 +49,14 @@ var myReducers = (state = initialState, action) => {
             localStorage.setItem('tasks', JSON.stringify(state));;
             return [...state]
 
-        default: return state;
+        case types.DELETE_TASK:
+            id = action.id
+            index = findIndex(state ,id)
+            state.splice(index, 1)
+            localStorage.setItem('tasks', JSON.stringify(state));;
+            return [...state]
 
+        default: return state;
     }
 }
 

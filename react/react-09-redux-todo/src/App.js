@@ -46,22 +46,6 @@ class App extends Component {
     })
   }
 
-
-  //chức năng xóa
-  onDelete = (id) => {
-    var { tasks } = this.state;
-    var index = this.findIndex(id)
-    console.log(index);
-    if (index !== -1) {
-      tasks.splice(index, 1 ); 
-      this.setState({
-        tasks: tasks
-      })
-    }
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-    this.onCloseForm();
-  }
-
   //chức năng sửa task
   onUpdate = (id) => {
     var { tasks } = this.state;
@@ -206,7 +190,6 @@ class App extends Component {
                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                   {/* List */}
                   <TaskList 
-                    onDelete = {this.onDelete}
                     onUpdate = {this.onUpdate}
                     onFilter = {this.onFilter}
                   />
