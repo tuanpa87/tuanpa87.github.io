@@ -68,7 +68,7 @@ class TaskForm extends Component {
         this.props.onAddTask(this.state);
         //Submit xong phai clear va close form
         this.onClear();
-        this.onExitForm();
+        this.onCloseForm();
     }
 
     //chức năng hủy bỏ khi nhập form
@@ -143,5 +143,7 @@ const mapDispatchToProps = (dispatch, props) => { //chuyen dispatch (action ) th
         }
     }
 }
+
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaskForm);
