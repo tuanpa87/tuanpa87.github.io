@@ -27,7 +27,7 @@ class TaskList extends Component {
     }
 
     render() {
-        console.log(this.props.todos) //log lai props to do 
+        //console.log(this.props.todos) //log lai props to do 
         var {tasks} = this.props;
         var { filterName , filterStatus } = this.state;
         var elmTasks = tasks.map((task,index )=> { //tạo các TaslItem con từ props truyền vào  
@@ -35,7 +35,6 @@ class TaskList extends Component {
                     key={task.id} //truyền key duy nhất
                     index={index} 
                     task={task}
-                    onUpdateStatus = {this.props.onUpdateStatus}
                     onDelete = {this.props.onDelete}
                     onUpdate = {this.props.onUpdate}
                     />

@@ -46,31 +46,6 @@ class App extends Component {
     })
   }
 
-  //chức năng cập nhật trạng thái
-  onUpdateStatus = (id) => {
-    var { tasks } = this.state;
-    console.log(id);
-    var index = this.findIndex(id)
-    console.log(index);
-    if (index !== -1) {
-      tasks[index].status = !tasks[index].status
-      this.setState({
-        tasks: tasks,
-      })
-    }
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-  }
-
-  findIndex = (id) => {
-    var result = -1;
-    var { tasks } = this.state;
-    tasks.forEach((task, index) => {
-      if (task.id === id) {
-        result = index;
-      }
-    })
-    return result
-  }
 
   //chức năng xóa
   onDelete = (id) => {
@@ -155,15 +130,15 @@ class App extends Component {
     //     }) 
     //   }
 
-      //filter theo status
-      // tasks = tasks.filter((task) => { //gắn lại task
-      //   if (filter.status === -1) {
-      //     return task
-      //   } else {
-      //     return task.status === (filter.status === 1 ? true : false)
-      //       // chuyển lại giá trị 0 1 về true false cho filter.status
-      //   }
-      // })
+    //filter theo status
+    // tasks = tasks.filter((task) => { //gắn lại task
+    //   if (filter.status === -1) {
+    //     return task
+    //   } else {
+    //     return task.status === (filter.status === 1 ? true : false)
+    //       // chuyển lại giá trị 0 1 về true false cho filter.status
+    //   }
+    // })
 
     //}
     // if (sortBy === 'name') {
@@ -231,7 +206,6 @@ class App extends Component {
                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                   {/* List */}
                   <TaskList 
-                    onUpdateStatus={this.onUpdateStatus} 
                     onDelete = {this.onDelete}
                     onUpdate = {this.onUpdate}
                     onFilter = {this.onFilter}

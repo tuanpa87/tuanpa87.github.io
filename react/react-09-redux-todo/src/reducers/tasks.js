@@ -32,6 +32,21 @@ var myReducers = (state = initialState, action) => {
             localStorage.setItem('tasks', JSON.stringify(state))
             return [...state] //tranh tham chieu bo nho
 
+        case types.UPDATE_STATUS:
+            var id = action.id
+            var index = findIndex(state ,id)
+            console.log(index)
+            //ko cap nhat duoc view
+            //state[index].status =! state[index].status
+
+            state[index] = {
+                ...state[index],
+                status: !state[index].status
+            }
+
+            localStorage.setItem('tasks', JSON.stringify(state));;
+            return [...state]
+
         default: return state;
 
     }
@@ -45,6 +60,17 @@ var s4 = () => {
 var generateID = () => {
     return s4() + s4() + s4() + '-' + s4() + s4() + s4() + s4() + s4() + s4()
 }
+
+var findIndex = (tasks ,id) => {
+    var result = -1;
+    tasks.forEach((task, index) => {
+        if (task.id === id) {
+            result = index;
+        }
+    })
+    return result
+}
+
 
 
 export default myReducers
