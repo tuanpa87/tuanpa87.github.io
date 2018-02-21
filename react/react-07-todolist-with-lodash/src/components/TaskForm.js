@@ -118,8 +118,12 @@ class TaskForm extends Component {
                         </select>
                         <br />
                         <div className="text-center">
-                            <button type="submit" className="btn btn-warning">Thêm</button>&nbsp;
-                            <button type="submit" className="btn btn-danger" onClick={this.OnClear} >Hủy Bỏ</button>
+                            <button type="submit" className="btn btn-warning">
+                                <span className="fa fa-plus mr-5"></span> Lưu lại
+                            </button>&nbsp;
+                            <button type="submit" className="btn btn-danger" onClick={this.OnClear} >
+                                <span className="fa fa-close mr-5"></span> Hủy bỏ
+                            </button>
                         </div>
                     </form>
                 </div>

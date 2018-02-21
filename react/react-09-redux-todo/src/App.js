@@ -10,7 +10,6 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      taskEditing: null, //dùng để xác định task đang sửa
       //filter: { //dung de filter form TaskList
        // name: '',
         //status: -1 
@@ -94,7 +93,6 @@ class App extends Component {
 
 
   render() {
-    var {taskEditing } = this.state; // ~ var tasks = this.state.tasks
     var {filter }  = this.state; 
     //console.log(filter)
     var { keyword } = this.state; 
@@ -157,7 +155,7 @@ class App extends Component {
           <div className="row">
             {/* Form */}
             <div className={isDisplayForm ? 'col-xs-4 col-sm-4 col-md-4 col-lg-4' : ''}>
-              <TaskForm task={taskEditing}/>
+              <TaskForm />
             </div>
             <div className={isDisplayForm ? 'col-xs-8 col-sm-8 col-md-8 col-lg-8' : 'col-xs-12 col-sm-12 col-md-12 col-lg-12'}>
               <button

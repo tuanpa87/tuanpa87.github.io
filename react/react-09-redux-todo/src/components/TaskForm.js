@@ -9,42 +9,41 @@ class TaskForm extends Component {
         this.state = { //state này để lưu trữ giá trị của form 
             id: '',
             name: '',
-            status: false,
+            status: false
         }
     }
 
-    //life cycle: nhận lại prop task = state.taskEditing từ ngoài component app
-    // componentWillMount() {
-    //     console.log('componentWillMount: goi duoc 1 lan dau')
-    //     if(this.props.task) {
-    //         this.setState ({ //set lại state của component này (TaskForm)
-    //             id: this.props.task.id,
-    //             name: this.props.task.name,
-    //             status: this.props.task.status
-    //         })
-    //     }  //sửa cũng qua function onChange -> onSubmit 
-    // }
+    //life cycle: nhận lại prop itemEditing = state.taskEditing từ ngoài component app
+    componentWillMount() {
+        console.log('componentWillMount: goi duoc 1 lan dau')
+        if (this.props.itemEditing && this.props.itemEditing !== null) {
+            this.setState({ //set lại state của component này (TaskForm)
+                id: this.props.itemEditing.id,
+                name: this.props.itemEditing.name,
+                status: this.props.itemEditing.status
+            })
+        }  //sửa cũng qua function onChange -> onSubmit 
+        else {
+            this.onClear();
+        }
+    }
 
-    // //life cycle: thay đổi state khi thêm <=> sửa
-    // componentWillReceiveProps(nextProps) {
-    //     console.log('componentWillReceiveProps:')
-    //     console.log(nextProps) //nextProps: nhận lại prop task = state.taskEditing  khi thay đổi thêm <=> sửa  
-    //     if(nextProps && nextProps.task) { //khi sửa thì có state.taskEditing tức là cũng có nextProps.task 
-    //         console.log('thêm => sửa')
-    //         this.setState ({
-    //             id: nextProps.task.id,
-    //             name: nextProps.task.name,
-    //             status: nextProps.task.status
-    //         })
-    //     } else if (!nextProps.task) { //khi thêm thì state.taskEditing = null tức là nextProps.task = null luôn
-    //         console.log('sửa => thêm') 
-    //         this.setState ({
-    //             id: '',
-    //             name: '',
-    //             status: false,
-    //         })
-    //     }
-    // }
+    //life cycle: thay đổi state khi thêm <=> sửa
+    componentWillReceiveProps(nextProps) {
+        console.log('componentWillReceiveProps:')
+        console.log(nextProps) //nextProps: nhận lại prop task = state.taskEditing  khi thay đổi thêm <=> sửa  
+        if (nextProps && nextProps.itemEditing) { //khi sửa thì có state.taskEditing tức là cũng có nextProps.task 
+            console.log('thêm => sửa')
+            this.setState({
+                id: nextProps.itemEditing.id,
+                name: nextProps.itemEditing.name,
+                status: nextProps.itemEditing.status
+            })
+        } else { //khi thêm thì state.taskEditing = null tức là nextProps.task = null luôn
+            console.log('sửa => thêm')
+            this.onClear();
+        }
+    }
 
     onExitForm = () => {
         this.props.onCloseForm();
@@ -65,7 +64,7 @@ class TaskForm extends Component {
     onSubmit = (e) => {
         e.preventDefault();
         //console.log(this.state)
-        this.props.onAddTask(this.state);
+        this.props.onSaveTask(this.state);
         //Submit xong phai clear va close form
         this.onClear();
         this.onExitForm();
@@ -74,19 +73,19 @@ class TaskForm extends Component {
     //chức năng hủy bỏ khi nhập form
     onClear = () => {
         this.setState({
+            id: '',
             name: '',
             status: false,
         })
     }
 
     render() {
-        var { id } = this.state
-        if (!this.props.isDisplayForm) return ''; //props.isDisplayForm được convert bên ngoài component App
+        if (!this.props.isDisplayForm) return null; //props.isDisplayForm được convert bên ngoài component App
         return (
             <div className="panel panel-warning">
                 <div className="panel-heading">
                     <h3 className="panel-title">
-                        {id !== '' ? 'Cập Nhật Công Việc' : 'Thêm Công Việc'}
+                        { !this.state.id ? 'Cập Nhật Công Việc' : 'Thêm Công Việc'}
                         <span
                             className="fa fa-times-circle text-right"
                             onClick={this.onExitForm}
@@ -118,8 +117,12 @@ class TaskForm extends Component {
                         </select>
                         <br />
                         <div className="text-center">
-                            <button type="submit" className="btn btn-warning">Thêm</button>&nbsp;
-                            <button type="submit" className="btn btn-danger" onClick={this.OnClear} >Hủy Bỏ</button>
+                            <button type="submit" className="btn btn-warning">
+                                <span className="fa fa-plus mr-5"></span> Lưu lại
+                            </button>&nbsp;
+                            <button type="submit" className="btn btn-danger" onClick={this.OnClear} >
+                                <span className="fa fa-close mr-5"></span> Hủy bỏ
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -130,14 +133,15 @@ class TaskForm extends Component {
 
 const mapStateToProps = (state) => { //chuyen state tu store chung thanh props 
     return {
-        isDisplayForm: state.isDisplayForm
+        isDisplayForm: state.isDisplayForm,
+        itemEditing: state.itemEditing
     }
 }
 
 const mapDispatchToProps = (dispatch, props) => { //chuyen dispatch (action ) thanh tu store props 
     return {
-        onAddTask: (task) => { //goi onAddTask thi se chuyen action len reducer de thuc thi thay doi trang thai
-            dispatch(actions.addTask(task))
+        onSaveTask: (task) => { //goi onAddTask thi se chuyen action len reducer de thuc thi thay doi trang thai
+            dispatch(actions.saveTask(task))
         },
         onCloseForm: () => {
             dispatch(actions.closeForm())

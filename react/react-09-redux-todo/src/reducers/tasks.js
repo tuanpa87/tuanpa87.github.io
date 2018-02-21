@@ -23,14 +23,22 @@ var myReducers = (state = initialState, action) => {
         case types.LIST_ALL:
             return state
 
-        case types.ADD_TASK:
+        case types.SAVE_TASK:
             console.log(action);
-            var newTask = {
-                id: generateID(),
+            var task = {
+                id: action.task.id,
                 name: action.task.name,
                 status: action.task.status
             }
-            state.push(newTask);
+
+            if(!task.id) { //thêm task task.id không có
+                task.id = generateID() ;
+                state.push(task);
+            } else { //sửa task
+                index = findIndex(state ,task.id)
+                state[index] = task
+            }
+
             localStorage.setItem('tasks', JSON.stringify(state))
             return [...state] //tranh tham chieu bo nho
 

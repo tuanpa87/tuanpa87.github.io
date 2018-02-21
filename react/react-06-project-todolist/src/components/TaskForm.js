@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class TaskForm extends Component {
 
-    constructor (props) {
+    constructor(props) {
         super(props);
         this.state = { //state này để lưu trữ giá trị của form 
             id: '',
@@ -14,8 +14,8 @@ class TaskForm extends Component {
     //life cycle: nhận lại prop task = state.taskEditing từ ngoài component app
     componentWillMount() {
         console.log('componentWillMount: goi duoc 1 lan dau')
-        if(this.props.task) {
-            this.setState ({ //set lại state của component này (TaskForm)
+        if (this.props.task) {
+            this.setState({ //set lại state của component này (TaskForm)
                 id: this.props.task.id,
                 name: this.props.task.name,
                 status: this.props.task.status
@@ -27,16 +27,16 @@ class TaskForm extends Component {
     componentWillReceiveProps(nextProps) {
         console.log('componentWillReceiveProps:')
         console.log(nextProps) //nextProps: nhận lại prop task = state.taskEditing  khi thay đổi thêm <=> sửa  
-        if(nextProps && nextProps.task) { //khi sửa thì có state.taskEditing tức là cũng có nextProps.task 
+        if (nextProps && nextProps.task) { //khi sửa thì có state.taskEditing tức là cũng có nextProps.task 
             console.log('thêm => sửa')
-            this.setState ({
+            this.setState({
                 id: nextProps.task.id,
                 name: nextProps.task.name,
                 status: nextProps.task.status
             })
         } else if (!nextProps.task) { //khi thêm thì state.taskEditing = null tức là nextProps.task = null luôn
-            console.log('sửa => thêm') 
-            this.setState ({
+            console.log('sửa => thêm')
+            this.setState({
                 id: '',
                 name: '',
                 status: false,
@@ -45,10 +45,10 @@ class TaskForm extends Component {
     }
 
     onCloseForm = () => {
-        this.props.onCloseForm(); 
+        this.props.onCloseForm();
     }
 
-    onChange = (event) => { 
+    onChange = (event) => {
         var target = event.target;
         var name = target.name;
         var value = target.value
@@ -80,12 +80,12 @@ class TaskForm extends Component {
     }
 
     render() {
-        var {id} = this.state
+        var { id } = this.state
         return (
             <div className="panel panel-warning">
                 <div className="panel-heading">
                     <h3 className="panel-title">
-                        {id!=='' ? 'Cập Nhật Công Việc' : 'Thêm Công Việc'}
+                        {id !== '' ? 'Cập Nhật Công Việc' : 'Thêm Công Việc'}
                         <span
                             className="fa fa-times-circle text-right"
                             onClick={this.onCloseForm}
@@ -96,20 +96,20 @@ class TaskForm extends Component {
                     <form onSubmit={this.onSubmit}>
                         <div className="form-group">
                             <label>Tên :</label>
-                            <input 
-                                type="text" 
-                                className="form-control" 
+                            <input
+                                type="text"
+                                className="form-control"
                                 name="name"
-                                value={this.state.name} 
+                                value={this.state.name}
                                 onChange={this.onChange}
                             />
                         </div>
                         <label>Trạng Thái :</label>
-                        <select 
-                            className="form-control" 
-                            required="required" 
+                        <select
+                            className="form-control"
+                            required="required"
                             name="status"
-                            value={this.state.status} 
+                            value={this.state.status}
                             onChange={this.onChange}
                         >
                             <option value={true}>Kích Hoạt</option>
@@ -117,8 +117,12 @@ class TaskForm extends Component {
                         </select>
                         <br />
                         <div className="text-center">
-                            <button type="submit" className="btn btn-warning">Thêm</button>&nbsp;
-                            <button type="submit" className="btn btn-danger" onClick={this.OnClear} >Hủy Bỏ</button>
+                            <button type="submit" className="btn btn-warning">
+                                <span className="fa fa-plus mr-5"></span> Lưu lại
+                            </button>&nbsp;
+                            <button type="submit" className="btn btn-danger" onClick={this.OnClear} >
+                                <span className="fa fa-close mr-5"></span> Hủy bỏ
+                            </button>
                         </div>
                     </form>
                 </div>
