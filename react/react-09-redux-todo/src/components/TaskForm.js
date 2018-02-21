@@ -68,7 +68,7 @@ class TaskForm extends Component {
         this.props.onAddTask(this.state);
         //Submit xong phai clear va close form
         this.onClear();
-        this.onCloseForm();
+        this.onExitForm();
     }
 
     //chức năng hủy bỏ khi nhập form
