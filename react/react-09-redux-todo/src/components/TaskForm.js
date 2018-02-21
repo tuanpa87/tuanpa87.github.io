@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from './../actions' 
+import * as actions from './../actions'
 
 class TaskForm extends Component {
 
-    constructor (props) {
+    constructor(props) {
         super(props);
         this.state = { //state này để lưu trữ giá trị của form 
             id: '',
@@ -46,11 +46,11 @@ class TaskForm extends Component {
     //     }
     // }
 
-    onCloseForm = () => {
-        this.props.onCloseForm(); 
+    onExitForm = () => {
+        this.props.onCloseForm();
     }
 
-    onChange = (event) => { 
+    onChange = (event) => {
         var target = event.target;
         var name = target.name;
         var value = target.value
@@ -80,15 +80,15 @@ class TaskForm extends Component {
     }
 
     render() {
-        var {id} = this.state
+        var { id } = this.state
         return (
             <div className="panel panel-warning">
                 <div className="panel-heading">
                     <h3 className="panel-title">
-                        {id!=='' ? 'Cập Nhật Công Việc' : 'Thêm Công Việc'}
+                        {id !== '' ? 'Cập Nhật Công Việc' : 'Thêm Công Việc'}
                         <span
                             className="fa fa-times-circle text-right"
-                            onClick={this.onCloseForm}
+                            onClick={this.onExitForm}
                         ></span>
                     </h3>
                 </div>
@@ -96,20 +96,20 @@ class TaskForm extends Component {
                     <form onSubmit={this.onSubmit}>
                         <div className="form-group">
                             <label>Tên :</label>
-                            <input 
-                                type="text" 
-                                className="form-control" 
+                            <input
+                                type="text"
+                                className="form-control"
                                 name="name"
-                                value={this.state.name} 
+                                value={this.state.name}
                                 onChange={this.onChange}
                             />
                         </div>
                         <label>Trạng Thái :</label>
-                        <select 
-                            className="form-control" 
-                            required="required" 
+                        <select
+                            className="form-control"
+                            required="required"
                             name="status"
-                            value={this.state.status} 
+                            value={this.state.status}
                             onChange={this.onChange}
                         >
                             <option value={true}>Kích Hoạt</option>
@@ -129,14 +129,17 @@ class TaskForm extends Component {
 
 const mapStateToProps = (state) => { //chuyen state tu store chung thanh props 
     return {
-       
-     }
-} 
+
+    }
+}
 
 const mapDispatchToProps = (dispatch, props) => { //chuyen dispatch (action ) thanh tu store props 
     return {
         onAddTask: (task) => { //goi onAddTask thi se chuyen action len reducer de thuc thi thay doi trang thai
-            dispatch (actions.addTask(task))
+            dispatch(actions.addTask(task))
+        },
+        onCloseForm: () => {
+            dispatch(actions.closeForm())
         }
     }
 }

@@ -17,7 +17,7 @@ var initialState = [
 var initialState = (data) ? data : []
 
 var myReducers = (state = initialState, action) => {
-    switch (action.types) {
+    switch (action.type) {
         case types.LIST_ALL:
             return state
 
@@ -26,13 +26,14 @@ var myReducers = (state = initialState, action) => {
             var newTask = {
                 id: generateID(),
                 name: action.task.name,
-                status: action.task.status === 'true' ? true : false
+                status: action.task.status
             }
             state.push(newTask);
             localStorage.setItem('tasks', JSON.stringify(state))
             return [...state] //tranh tham chieu bo nho
 
         default: return state;
+
     }
 }
 
@@ -44,7 +45,6 @@ var s4 = () => {
 var generateID = () => {
     return s4() + s4() + s4() + '-' + s4() + s4() + s4() + s4() + s4() + s4()
 }
-
 
 
 export default myReducers

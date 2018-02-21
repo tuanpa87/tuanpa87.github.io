@@ -3,12 +3,13 @@ import './App.css';
 import TaskForm from './components/TaskForm'
 import TaskControl from './components/TaskControl'
 import TaskList from './components/TaskList';
+import { connect } from 'react-redux';
+import * as actions from './actions' 
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isDisplayForm: false,
       taskEditing: null, //dùng để xác định task đang sửa
       //filter: { //dung de filter form TaskList
        // name: '',
@@ -23,26 +24,20 @@ class App extends Component {
 
   //chức năng thêm
   onToogleForm = () => {
-    if (this.state.isDisplayForm && this.state.taskEditing !== null) {
-      //khi dang mo form sửa
-      this.setState({
-        isDisplayForm: true,
-        taskEditing: null
-      })
-    } else {
-      //mac dinh
-      this.setState({
-        isDisplayForm: !this.state.isDisplayForm,
-        taskEditing: null
-      })
-    }
-  }
-
-  onCloseForm = () => {
-    //console.log('onCloseForm')
-    this.setState({
-      isDisplayForm: false
-    })
+    // if (this.state.isDisplayForm && this.state.taskEditing !== null) {
+    //   //khi dang mo form sửa
+    //   this.setState({
+    //     isDisplayForm: true,
+    //     taskEditing: null
+    //   })
+    // } else {
+    //   //mac dinh
+    //   this.setState({
+    //     isDisplayForm: !this.state.isDisplayForm,
+    //     taskEditing: null
+    //   })
+    // }
+    this.props.onToogleForm();
   }
 
   onShowForm = () => {
@@ -50,30 +45,6 @@ class App extends Component {
       isDisplayForm: true
     })
   }
-
-  //submit task khi thêm hoặc sửa
-  //truyền vào state của data = state của component TaskForm 
-  onSubmit = (data) => {
-    console.log(data)
-    var { tasks } = this.state; //tasks =  this.state.tasks
-    if (data.id === '') {
-      //Thêm vào data
-      data.id = this.generateID();
-      tasks.push(data);
-    } else {
-      //Edit task: thay lại giá trị task =  data
-      var index = this.findIndex(data.id)
-      tasks[index] = data;
-    }
-
-    //xong rồi phải set lại state của App
-    this.setState({
-      tasks: tasks,
-      taskEditing: null
-    })
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-  }
-
 
   //chức năng cập nhật trạng thái
   onUpdateStatus = (id) => {
@@ -164,12 +135,14 @@ class App extends Component {
 
 
   render() {
-    var {isDisplayForm, taskEditing } = this.state; // ~ var tasks = this.state.tasks
+    var {taskEditing } = this.state; // ~ var tasks = this.state.tasks
     var {filter }  = this.state; 
     //console.log(filter)
     var { keyword } = this.state; 
     var {sortBy, sortValue} = this.state
 
+
+    var {isDisplayForm} = this.props
     //filter task list
     // if (filter) {  
     //   //!x will return true for every "falsy" value (empty string, 0, null, false, undefined, NaN) 
@@ -216,8 +189,6 @@ class App extends Component {
     // }
 
     var elmTaskForm = (isDisplayForm) ? <TaskForm 
-                                        onCloseForm={this.onCloseForm} 
-                                        onSubmit={this.onSubmit} 
                                         task={taskEditing}/>  //truyền prop này để sửa task 
                                       : ''
     return (
@@ -275,4 +246,19 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => { //chuyen state tu store chung thanh props 
+  return {
+     isDisplayForm: state.isDisplayForm
+   }
+} 
+
+const mapDispatchToProps = (dispatch, props) => { //chuyen dispatch (action ) thanh tu store props 
+  return {
+    onToogleForm: () => {
+      dispatch(actions.toggleForm())
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+
