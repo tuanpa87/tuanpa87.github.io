@@ -206,8 +206,8 @@ class App extends Component {
 
     if (sortBy === 'name') {
       tasks.sort((a, b) => {
-        if (a.name > b.name) return sortValue;  // cai nao return ve 1 thi thuc hien cai do
-        else if (a.name < b.name) return -sortValue //sortValue = 1 or -1
+        if (a.name.toLowerCase() > b.name.toLowerCase()) return sortValue;  // cai nao return ve 1 thi thuc hien cai do
+        else if (a.name.toLowerCase() < b.name.toLowerCase()) return -sortValue //sortValue = 1 or -1
         else return 0
       })
     } else {

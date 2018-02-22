@@ -118,7 +118,7 @@ class TaskSortControl extends Component {
 
 
 
-// class TaskSortControl2 extends Component {
+// class TaskSortControl extends Component {
 
 //     constructor(props) {
 //         super(props);
@@ -244,4 +244,3 @@ const mapDispatchToProps = (dispatch, props) => { //chuyen dispatch (action ) th
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaskSortControl);
-//export default connect(mapStateToProps, mapDispatchToProps)(TaskSortControl2);
