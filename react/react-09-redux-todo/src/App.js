@@ -10,10 +10,6 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      //filter: { //dung de filter form TaskList
-       // name: '',
-        //status: -1 
-      //},
       //keyword: '', //dùng cho chức năng tìm kiếm
       sortBy: 'name',
       sortValue: 1
@@ -35,18 +31,6 @@ class App extends Component {
     })
   }
 
-  onFilter = (filterName, filterStatus) => {
-    //console.log(filterName, '-' , filterStatus , typeof filterStatus)
-    filterStatus = parseInt(filterStatus, 10)
-    //console.log(typeof filterStatus)
-    this.setState ({
-      filter: {
-        name: filterName.toLowerCase(),
-        status: filterStatus
-      }
-    })
-  }
-
   //chức năng search
   onSearch = (keyword) => {
     console.log(keyword)
@@ -64,35 +48,10 @@ class App extends Component {
     })
   }
 
-
   render() {
-    var {filter }  = this.state; 
-    //console.log(filter)
     var { keyword } = this.state; 
     var {sortBy, sortValue} = this.state
-
     var {isDisplayForm} = this.props
-    //filter task list
-    // if (filter) {  
-    //   //!x will return true for every "falsy" value (empty string, 0, null, false, undefined, NaN) 
-    //   if(filter.name) { //kiểm tra khác (empty string, 0, null, false, undefined, NaN) 
-       
-    //     //task nay sẽ render ở chỗ TaskList phía dưới nhé
-    //     //filter methol js: filter (Test function) trả lại những giá trị thỏa mãn đk của test function
-    //     tasks = tasks.filter((task) => { //gắn lại task
-    //       return task.name.toLowerCase().indexOf(filter.name) !== -1
-    //     }) 
-    //   }
-
-    //filter theo status
-    // tasks = tasks.filter((task) => { //gắn lại task
-    //   if (filter.status === -1) {
-    //     return task
-    //   } else {
-    //     return task.status === (filter.status === 1 ? true : false)
-    //       // chuyển lại giá trị 0 1 về true false cho filter.status
-    //   }
-    // })
 
     //}
     // if (sortBy === 'name') {
@@ -150,9 +109,7 @@ class App extends Component {
               <div className="row mt-15">
                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                   {/* List */}
-                  <TaskList 
-                    onFilter = {this.onFilter}
-                  />
+                  <TaskList />
                 </div>
               </div>
             </div>
