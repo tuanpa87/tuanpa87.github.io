@@ -31,7 +31,7 @@ var myReducers = (state = initialState, action) => {
                 status: action.task.status
             }
 
-            if(!task.id) { //thêm task task.id không có
+            if(!task.id) { //thêm task: task.id không có
                 task.id = generateID() ;
                 state.push(task);
             } else { //sửa task

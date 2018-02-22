@@ -3,7 +3,7 @@ import * as types from './../constants/ActionTypes' //import lai danh sach actio
 var initialState = {
     id: '',
     name: '',
-    status:false
+    status: false
 }
 
 var myReducers = (state = initialState, action) => {

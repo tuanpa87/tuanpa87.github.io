@@ -20,46 +20,19 @@ class App extends Component {
     }
   }
 
-
-  //chức năng thêm
+  //chức năng thêm hoặc sửa
   onToogleForm = () => {
-    // if (this.state.isDisplayForm && this.state.taskEditing !== null) {
-    //   //khi dang mo form sửa
-    //   this.setState({
-    //     isDisplayForm: true,
-    //     taskEditing: null
-    //   })
-    // } else {
-    //   //mac dinh
-    //   this.setState({
-    //     isDisplayForm: !this.state.isDisplayForm,
-    //     taskEditing: null
-    //   })
-    // }
-    this.props.onToogleForm();
-  }
-
-  onShowForm = () => {
-    this.setState({
-      isDisplayForm: true
-    })
-  }
-
-  //chức năng sửa task
-  onUpdate = (id) => {
-    var { tasks } = this.state;
-    var index = this.findIndex(id)
-    console.log(index);
-    var taskEditing = tasks[index]
-    //console.log(taskEditing)
-    if (index !== -1) {
-      this.setState({
-        taskEditing: taskEditing 
-      });
-      //console.log(this.state.taskEditing) 
-      //log tren se log lai state cu chua duoc update 
+    var {itemEditing} = this.props;
+    if (itemEditing && itemEditing.id) {
+      this.props.onOpenForm();
+    } else {
+      this.props.onToogleForm();
     }
-    this.onShowForm();
+    this.props.onClearTask({
+      id: '',
+      name: '',
+      status: false
+    })
   }
 
   onFilter = (filterName, filterStatus) => {
@@ -178,7 +151,6 @@ class App extends Component {
                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                   {/* List */}
                   <TaskList 
-                    onUpdate = {this.onUpdate}
                     onFilter = {this.onFilter}
                   />
                 </div>
@@ -193,7 +165,8 @@ class App extends Component {
 
 const mapStateToProps = (state) => { //chuyen state tu store chung thanh props 
   return {
-     isDisplayForm: state.isDisplayForm
+     isDisplayForm: state.isDisplayForm,
+     itemEditing: state.itemEditing
    }
 } 
 
@@ -201,6 +174,12 @@ const mapDispatchToProps = (dispatch, props) => { //chuyen dispatch (action ) th
   return {
     onToogleForm: () => {
       dispatch(actions.toggleForm())
+    },
+    onClearTask: (task) => {
+      dispatch(actions.editTask(task))
+    },
+    onOpenForm: () => {
+      dispatch(actions.openForm())
     }
   }
 }

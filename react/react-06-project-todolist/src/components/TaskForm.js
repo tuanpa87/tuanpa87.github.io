@@ -120,7 +120,7 @@ class TaskForm extends Component {
                             <button type="submit" className="btn btn-warning">
                                 <span className="fa fa-plus mr-5"></span> Lưu lại
                             </button>&nbsp;
-                            <button type="submit" className="btn btn-danger" onClick={this.OnClear} >
+                            <button type="button" className="btn btn-danger" onClick={this.onClear} >
                                 <span className="fa fa-close mr-5"></span> Hủy bỏ
                             </button>
                         </div>
