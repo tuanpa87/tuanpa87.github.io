@@ -29,13 +29,12 @@ class TaskList extends Component {
 
     render() {
         var { filterName, filterStatus } = this.state;
-        var { tasks, filterTable, keyword } = this.props;
-        console.log('filter on table: ' + filterTable)
-      
+        var { tasks, filterTable, keyword, sort } = this.props;
+
         //filter on table, lay dieu kien o state chung redux
         //filter theo name
         if (filterTable.name) { //kiểm tra khác (empty string, 0, null, false, undefined, NaN) 
-
+            console.log('filter on table by name: ' + filterTable.name)
             //task nay sẽ render ở chỗ TaskList phía dưới nhé
             //filter methol js: filter (Test function) trả lại những giá trị thỏa mãn đk của test function
             tasks = tasks.filter((task) => { //gắn lại task
@@ -48,20 +47,37 @@ class TaskList extends Component {
             if (filterTable.status === -1) {
                 return task
             } else {
+                console.log('filter on table by status: ' + filterTable.status)
                 return task.status === (filterTable.status === 1 ? true : false)
                 // chuyển lại giá trị 0 1 về true false cho filter.status
             }
         })
 
-        //chuc nang search   
-        console.log('search: ' +  keyword)
-
+        //chuc nang search
         if (this.props.keyword) {
-          tasks = tasks.filter((task) => { //gắn lại task
-            return task.name.toLowerCase().indexOf(keyword.toLowerCase()) !== -1
-          }) 
+            console.log('search: ' + keyword)
+            tasks = tasks.filter((task) => { //gắn lại task
+                return task.name.toLowerCase().indexOf(keyword.toLowerCase()) !== -1
+            })
         }
 
+        //chuc nang sort
+        if (sort.by) {
+            console.log('sort by: ' + sort.by + ', sort value: ' + sort.value)
+            if (sort.by === 'name') {
+                tasks.sort((a, b) => {
+                    if (a.name.toLowerCase() > b.name.toLowerCase()) return sort.value;  // cai nao return ve 1 thi thuc hien cai do
+                    else if (a.name.toLowerCase() < b.name.toLowerCase()) return -sort.value //sort.value = 1 or -1
+                    else return 0
+                })
+            } else {
+                tasks.sort((a, b) => {
+                    if (a.status > b.status) return -sort.value;
+                    else if (a.status < b.status) return sort.value
+                    else return 0
+                })
+            }
+        }
 
         //hien thi
         var elmTasks = tasks.map((task, index) => { //tạo các TaslItem con từ props truyền vào  
@@ -120,7 +136,8 @@ const mapStateToProps = (state) => { //chuyen state tu store chung thanh props c
     return {
         tasks: state.tasks, //khai boa props todos
         filterTable: state.filterTable,
-        keyword: state.search
+        keyword: state.search,
+        sort: state.sort
     }
 }
 

@@ -7,15 +7,6 @@ import { connect } from 'react-redux';
 import * as actions from './actions' 
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      //keyword: '', //dùng cho chức năng tìm kiếm
-      sortBy: 'name',
-      sortValue: 1
-    }
-  }
-
   //chức năng thêm hoặc sửa
   onToogleForm = () => {
     var {itemEditing} = this.props;
@@ -31,51 +22,10 @@ class App extends Component {
     })
   }
 
-  //chức năng search
-  onSearch = (keyword) => {
-    console.log(keyword)
-    this.setState({
-      keyword: keyword.toLowerCase()
-    })
-  }
-
-  //chuc nang sap xep
-  onSort = (sortBy, sortValue) => {
-    console.log(sortBy, sortValue)
-    this.setState({
-      sortBy: sortBy,
-      sortValue: sortValue
-    })
-  }
-
   render() {
-    var { keyword } = this.state; 
-    var {sortBy, sortValue} = this.state
-    var {isDisplayForm} = this.props
-
-    //}
-    // if (sortBy === 'name') {
-    //   tasks.sort((a, b) => {
-    //     if (a.name > b.name) return sortValue;  // cai nao return ve 1 thi thuc hien cai do
-    //     else if (a.name < b.name) return -sortValue //sortValue = 1 or -1
-    //     else return 0
-    //   })
-    // } else {
-    //   tasks.sort((a, b) => {
-    //     if (a.status > b.status) return -sortValue;  
-    //     else if (a.status  < b.status ) return sortValue 
-    //     else return 0
-    //   })
-    // }
- 
     
-    //chuc nang tim kiem
-    // if (keyword) {
-    //   tasks = tasks.filter((task) => { //gắn lại task
-    //     return task.name.toLowerCase().indexOf(keyword) !== -1
-    //   }) 
-    // }
-
+    var {isDisplayForm} = this.props
+ 
     return (
       <div className="App">
         <div className="container">
@@ -99,12 +49,7 @@ class App extends Component {
               </button>
 
               {/* Search & Sort */}
-              <TaskControl 
-                onSearch={this.onSearch} 
-                onSort={this.onSort}
-                sortBy= {sortBy}
-                sortValue = {sortValue}
-              />
+              <TaskControl />
 
               <div className="row mt-15">
                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">

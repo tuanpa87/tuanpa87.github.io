@@ -9,7 +9,7 @@ class TaskControl extends Component {
                 {/* Search */}
                 <TaskSearchControl/>
                 {/* Sort */}
-                <TaskSortControl onSort = {this.props.onSort} sortBy ={this.props.sortBy} sortValue ={this.props.sortValue} />
+                <TaskSortControl/>
             </div>
         );
     }
