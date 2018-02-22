@@ -29,9 +29,9 @@ class TaskList extends Component {
 
     render() {
         var { filterName, filterStatus } = this.state;
-        var { tasks, filterTable } = this.props;
-        console.log(filterTable)
-
+        var { tasks, filterTable, keyword } = this.props;
+        console.log('filter on table: ' + filterTable)
+      
         //filter on table, lay dieu kien o state chung redux
         //filter theo name
         if (filterTable.name) { //kiểm tra khác (empty string, 0, null, false, undefined, NaN) 
@@ -53,6 +53,17 @@ class TaskList extends Component {
             }
         })
 
+        //chuc nang search   
+        console.log('search: ' +  keyword)
+
+        if (this.props.keyword) {
+          tasks = tasks.filter((task) => { //gắn lại task
+            return task.name.toLowerCase().indexOf(keyword.toLowerCase()) !== -1
+          }) 
+        }
+
+
+        //hien thi
         var elmTasks = tasks.map((task, index) => { //tạo các TaslItem con từ props truyền vào  
             return <TaskItem
                 key={task.id} //truyền key duy nhất
@@ -108,7 +119,8 @@ class TaskList extends Component {
 const mapStateToProps = (state) => { //chuyen state tu store chung thanh props cua TaskList
     return {
         tasks: state.tasks, //khai boa props todos
-        filterTable: state.filterTable
+        filterTable: state.filterTable,
+        keyword: state.search
     }
 }
 
