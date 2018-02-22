@@ -71,7 +71,7 @@ const mapStateToProps = (state) => { //chuyen state tu store chung thanh props
    }
 } 
 
-const mapDispatchToProps = (dispatch, props) => { //chuyen dispatch (action ) thanh tu store props 
+const mapDispatchToProps = (dispatch, props) => { //tao dispatch tu action => reducer se phan tich de chuyen state cu thanh state moi trong store
   return {
     onToogleForm: () => {
       dispatch(actions.toggleForm())
@@ -86,4 +86,3 @@ const mapDispatchToProps = (dispatch, props) => { //chuyen dispatch (action ) th
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
-

@@ -139,7 +139,7 @@ const mapStateToProps = (state) => { //chuyen state tu store chung thanh props c
     }
 }
 
-const mapDispatchToProps = (dispatch, props) => { //chuyen dispatch (action ) thanh tu store props 
+const mapDispatchToProps = (dispatch, props) => {  //tao dispatch tu action => reducer se phan tich de chuyen state cu thanh state moi trong store
     return {
         onFilterTable: (filter) => {
             dispatch(actions.filterTask(filter))

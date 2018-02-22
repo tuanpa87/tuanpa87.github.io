@@ -9,6 +9,7 @@ class TaskForm extends Component {
         }
     }
 
+    //life cycle: compormentWillMount khi tạo components.  
     //life cycle: nhận lại prop itemEditing và set lại state 
     componentWillMount() {
         console.log('componentWillMount: goi duoc 1 lan dau')
@@ -24,6 +25,7 @@ class TaskForm extends Component {
         }
     }
 
+    //life cycle: componentWillReceiveProps khi có sự thay đổi props
     //life cycle: thay đổi state khi thêm <=> sửa
     componentWillReceiveProps(nextProps) {
         console.log('componentWillReceiveProps:')
@@ -141,7 +143,7 @@ const mapStateToProps = (state) => { //chuyen state tu store chung thanh props
     }
 }
 
-const mapDispatchToProps = (dispatch, props) => { //chuyen dispatch (action ) thanh tu store props 
+const mapDispatchToProps = (dispatch, props) => {  //tao dispatch tu action => reducer se phan tich de chuyen state cu thanh state moi trong store
     return {
         onSaveTask: (task) => { //goi onAddTask thi se chuyen action len reducer de thuc thi thay doi trang thai
             dispatch(actions.saveTask(task))
