@@ -68,7 +68,6 @@ class TaskSortControl extends Component {
                         // set style in react: style = {element's style object} 
                         // style={{display: 'block', background: 'red'}} 
                     >
-
                         <li onClick={() => this.onClick('name', 1)} >
                             <a
                                 role="button"
@@ -115,7 +114,6 @@ class TaskSortControl extends Component {
         );
     }
 }
-
 
 
 // class TaskSortControl extends Component {
@@ -180,9 +178,6 @@ class TaskSortControl extends Component {
 //                         /* set style in react: style = {element's style object} */
 //                         /* style={{display: 'block', background: 'red'}} */
 //                     >
-
-
-
 //                         <li onClick={() => this.onClick('name', 1)} >
 //                             <a
 //                                 role="button"

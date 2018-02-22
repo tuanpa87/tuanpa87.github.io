@@ -23,7 +23,6 @@ class App extends Component {
   }
 
   render() {
-    
     var {isDisplayForm} = this.props
  
     return (

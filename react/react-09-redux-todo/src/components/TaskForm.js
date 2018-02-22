@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import * as actions from './../actions'
 
 class TaskForm extends Component {
-
     constructor(props) {
         super(props);
         this.state = { //state này để lưu trữ giá trị của form 
@@ -29,7 +28,7 @@ class TaskForm extends Component {
     componentWillReceiveProps(nextProps) {
         console.log('componentWillReceiveProps:')
         console.log(nextProps) //nextProps: nhận lại prop task = state.taskEditing  khi thay đổi thêm <=> sửa  
-        if (nextProps && nextProps.itemEditing.id) { //khi sửa thì có state.taskEditing tức là cũng có nextProps.task 
+        if (nextProps && nextProps.itemEditing) { //khi sửa thì có state.taskEditing tức là cũng có nextProps.task 
             console.log('thêm => sửa')
             this.setState({
                 id: nextProps.itemEditing.id,
@@ -67,7 +66,7 @@ class TaskForm extends Component {
         this.onExitForm();
     }
 
-    //chức năng hủy bỏ khi nhập form
+   //xoa gia tri
     onClear = () => {
         console.log('onClear')
         this.setState({
@@ -76,7 +75,8 @@ class TaskForm extends Component {
         })
     }
 
-    onCancel = () => {
+    //chức năng hủy bỏ khi nhập form
+    onCancel = () => {  
         this.onClear();
         this.onExitForm();
     }

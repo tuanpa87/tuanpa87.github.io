@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import * as actions from '.././actions'
 
 class TaskList extends Component {
-
     constructor(props) {
         super(props);
         this.state = { //state để tìm kiếm 
@@ -131,7 +130,6 @@ class TaskList extends Component {
     }
 }
 
-
 const mapStateToProps = (state) => { //chuyen state tu store chung thanh props cua TaskList
     return {
         tasks: state.tasks, //khai boa props todos
@@ -148,6 +146,5 @@ const mapDispatchToProps = (dispatch, props) => { //chuyen dispatch (action ) th
         }
     }
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaskList);

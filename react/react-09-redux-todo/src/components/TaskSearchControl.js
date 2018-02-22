@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import * as actions from '.././actions'
 
 class TaskSearchControl extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -24,7 +23,6 @@ class TaskSearchControl extends Component {
         e.preventDefault();
         this.props.onSearch(this.state.keyword) //dispatch actions.searchTask
     }
-
 
     render() {
         var { keyword } = this.state

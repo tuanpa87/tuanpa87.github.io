@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import * as actions from '.././actions'
 
 class TaskItem extends Component {
+
     onUpdateStatus = () => {
         this.props.onUpdateStatus(this.props.task.id)
-
     }
 
     onDelete = () => {
@@ -18,7 +18,6 @@ class TaskItem extends Component {
         this.props.onOpenForm() //dispatch(action.openForm)
         this.props.onEditTask(this.props.task)
     }
-
 
     render() {
         var { task, index } = this.props
@@ -58,7 +57,6 @@ class TaskItem extends Component {
 
 const mapStateToProps = (state) => { //chuyen state tu store chung thanh props 
     return {
-
     }
 }
 
@@ -80,12 +78,10 @@ const mapDispatchToProps = (dispatch, props) => { //chuyen dispatch (action ) th
         onOpenForm: () => {
             dispatch(actions.openForm())
         },
-
         onEditTask: (task) => {
             dispatch(actions.editTask(task))
         },
-    } 
+    }
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaskItem);
