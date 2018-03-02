@@ -28,7 +28,7 @@ class Product extends Component {
                             {product.description}
                         </p>
                         <div className="card-footer">
-                            <span className="left">{product.price}</span>
+                            <span className="left">{product.price}$</span>
                             <span className="right">
                                 <a className="btn-floating blue-gradient" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add to Cart">
                                     <i className="fa fa-shopping-cart"></i>
