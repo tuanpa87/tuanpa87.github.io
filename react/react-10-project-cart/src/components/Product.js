@@ -21,23 +21,9 @@ class Product extends Component {
                                 <a>{product.name}</a>
                             </strong>
                         </h4>
-                        <ul className="rating">
-                            <li>
-                                <i className="fa fa-star"></i>
-                            </li>
-                            <li>
-                                <i className="fa fa-star"></i>
-                            </li>
-                            <li>
-                                <i className="fa fa-star"></i>
-                            </li>
-                            <li>
-                                <i className="fa fa-star"></i>
-                            </li>
-                            <li>
-                                <i className="fa fa-star"></i>
-                            </li>
-                        </ul>
+                        <div className="rating">
+                             {this.showRatings(product.rating)}   
+                        </div>
                         <p className="card-text">
                             {product.description}
                         </p>
@@ -53,6 +39,17 @@ class Product extends Component {
                 </div>
             </div>
         );
+    }
+
+    showRatings (rating) {
+        var result = [];
+        for (var i = 1; i<= rating; i++ ) {
+            result.push( <i className="fa fa-star"></i>)
+        }
+        for (var j = 1; j <= (5 - rating); j++ ) {
+            result.push( <i className="fa fa-star-o"></i>)
+        }
+         return result   
     }
 }
 
