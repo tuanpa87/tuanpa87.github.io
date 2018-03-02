@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Product from './Product';
-import {connect} from 'react-redux';
 
+//xu ly hoan toan bang props
+//chi thuc hien cau truc html va css
+//ket noi voi container component tuong ung de su dung redux
 
 class Products extends Component {
     render() {
@@ -28,10 +30,4 @@ class Products extends Component {
     }
 }
 
-const mapStateToProp = (state) => {
-    return {
-        products: state.products
-    }
-}
-
-export default connect(mapStateToProp, null)(Products);
+export default Products;
