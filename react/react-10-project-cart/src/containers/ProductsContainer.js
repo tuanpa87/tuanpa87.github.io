@@ -24,6 +24,7 @@ class ProductsContainer extends Component {
             results = products.map((product, index) => {
                 return <Product key = {index} product = {product} />
             })
+            //console.log(results)
         }
         return results
     }
