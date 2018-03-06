@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import * as Message from './../constants/Messages';
 
 class CartItem extends Component {
     render() {
@@ -32,8 +32,15 @@ class CartItem extends Component {
                 </td>
                 <td>{this.showSubTotal(item.product.price, item.quantity)}$</td>
                 <td>
-                    <button type="button" className="btn btn-sm btn-primary waves-effect waves-light" data-toggle="tooltip" data-placement="top"
-                        title="" data-original-title="Remove item">
+                    <button 
+                        type="button" 
+                        className="btn btn-sm btn-primary waves-effect waves-light" 
+                        data-toggle="tooltip" d
+                        ata-placement="top"
+                        title="" 
+                        data-original-title="Remove item"
+                        onClick={() => this.onDelete(item.product)}
+                    >
                         X
                     </button>
                 </td>
@@ -42,6 +49,13 @@ class CartItem extends Component {
     }
 
     showSubTotal = (price, quantity) => price * quantity
+
+    onDelete = (product) => {
+        var {onDeleteProductInCart, onChangeMessage} = this.props
+        console.log(product);
+        onDeleteProductInCart(product);
+        onChangeMessage(Message.MSG_DETELE_PRODUCT_IN_CART_SUCCESS);
+    }
 }
 
 export default CartItem;

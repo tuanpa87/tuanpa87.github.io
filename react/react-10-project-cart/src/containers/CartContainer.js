@@ -5,6 +5,7 @@ import * as  Message from './../constants/Messages';
 import Cart from './../components/Cart'
 import CartItem from './../components/CartItem'
 import CartResult from './../components/CartResult'
+import {actRemoveProductInCart, actChangeMessage} from './../actions'
 
 //cac container la trung gian lay du lieu tu store chung
 //truyen props vao component tuong ung de su dung redux store
@@ -22,6 +23,7 @@ class CartContainer extends Component {
     }
 
     showCartItem = (cart) => {
+        var {onDeleteProductInCart, onChangeMessage} = this.props
         var results = (
             <tr>
                 <td>{Message.MSG_CART_EMPTY}</td>
@@ -30,7 +32,12 @@ class CartContainer extends Component {
 
         if (cart.length > 0) {
             results = cart.map((item, index) => {
-                return <CartItem key={index} item={item} />
+                return <CartItem 
+                    key={index} 
+                    item={item} 
+                    onDeleteProductInCart = {onDeleteProductInCart}
+                    onChangeMessage = {onChangeMessage}
+                />
             })
             console.log(results)
         }
@@ -70,4 +77,16 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, null)(CartContainer);
+const mapDispatchToProps = (dispatch,props) => {
+    return {
+        onDeleteProductInCart: (product) => {
+            dispatch(actRemoveProductInCart(product))
+        }, 
+        onChangeMessage: (message) => {
+            dispatch(actChangeMessage(message)) 
+        }
+    }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(CartContainer);
