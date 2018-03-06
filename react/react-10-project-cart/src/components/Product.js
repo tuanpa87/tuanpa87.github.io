@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-
+import * as Message from './../constants/Messages';
 
 class Product extends Component {
     render() {
-
         var {product} = this.props
         return (
             <div className="col-lg-4 col-md-6 mb-r">
@@ -61,6 +60,7 @@ class Product extends Component {
 
     onAddToCart = (product) => {
         this.props.onAddToCart(product)
+        this.props.onChangeMessage(Message.MSG_ADD_TO_CART_SUCCESS)
     }
 }
 

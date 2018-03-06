@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 
+
 //xu ly hoan toan bang props
 //chi thuc hien cau truc html va css
 //ket noi voi container component tuong ung de su dung redux
