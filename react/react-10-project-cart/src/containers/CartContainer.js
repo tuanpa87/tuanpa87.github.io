@@ -5,7 +5,7 @@ import * as  Message from './../constants/Messages';
 import Cart from './../components/Cart'
 import CartItem from './../components/CartItem'
 import CartResult from './../components/CartResult'
-import {actRemoveProductInCart, actChangeMessage} from './../actions'
+import {actRemoveProductInCart, actChangeMessage, actUpdateProductInCart} from './../actions'
 
 //cac container la trung gian lay du lieu tu store chung
 //truyen props vao component tuong ung de su dung redux store
@@ -23,7 +23,7 @@ class CartContainer extends Component {
     }
 
     showCartItem = (cart) => {
-        var {onDeleteProductInCart, onChangeMessage} = this.props
+        var {onDeleteProductInCart, onChangeMessage, onUpdateProductInCart} = this.props
         var results = (
             <tr>
                 <td>{Message.MSG_CART_EMPTY}</td>
@@ -37,6 +37,7 @@ class CartContainer extends Component {
                     item={item} 
                     onDeleteProductInCart = {onDeleteProductInCart}
                     onChangeMessage = {onChangeMessage}
+                    onUpdateProductInCart = {onUpdateProductInCart}
                 />
             })
             console.log(results)
@@ -67,7 +68,10 @@ CartContainer.propTypes = {
             }).isRequired,
             quantity: PropTypes.number.isRequired
         })
-    ).isRequired
+    ).isRequired,
+    onChangeMessage: PropTypes.func.isRequired,
+    onDeleteProductInCart: PropTypes.func.isRequired,
+    onUpdateProductInCart: PropTypes.func.isRequired
 }
 
 
@@ -84,6 +88,9 @@ const mapDispatchToProps = (dispatch,props) => {
         }, 
         onChangeMessage: (message) => {
             dispatch(actChangeMessage(message)) 
+        },
+        onUpdateProductInCart: (product, quantity) => {
+            dispatch(actUpdateProductInCart(product, quantity))
         }
     }
 }

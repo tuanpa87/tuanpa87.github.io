@@ -2,9 +2,18 @@ import React, { Component } from 'react';
 import * as Message from './../constants/Messages';
 
 class CartItem extends Component {
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         quantity: 1
+    //     }
+    // }
+
     render() {
         var {item} = this.props;
-        console.log(item);
+        //console.log(item);
+        var {quantity} = item
+        console.log(quantity)
         return (
             <tr>
                 <th scope="row">
@@ -18,13 +27,17 @@ class CartItem extends Component {
                 </td>
                 <td>{item.product.price}$</td>
                 <td className="center-on-small-only">
-                    <span className="qty"> {item.quantity} </span>
+                    <span className="qty"> {quantity} </span>
                     <div className="btn-group radio-group" data-toggle="buttons">
-                        <label className="btn btn-sm btn-primary
+                        <label 
+                            onClick = {() => this.onUpdateQuantity(item.product, item.quantity - 1)}
+                            className="btn btn-sm btn-primary
                             btn-rounded waves-effect waves-light">
                             <a>—</a>
                         </label>
-                        <label className="btn btn-sm btn-primary
+                        <label 
+                            onClick = {() => this.onUpdateQuantity(item.product, item.quantity + 1)}
+                            className="btn btn-sm btn-primary
                             btn-rounded waves-effect waves-light">
                             <a>+</a>
                         </label>
@@ -35,7 +48,7 @@ class CartItem extends Component {
                     <button 
                         type="button" 
                         className="btn btn-sm btn-primary waves-effect waves-light" 
-                        data-toggle="tooltip" d
+                        data-toggle="tooltip" 
                         ata-placement="top"
                         title="" 
                         data-original-title="Remove item"
@@ -55,6 +68,18 @@ class CartItem extends Component {
         console.log(product);
         onDeleteProductInCart(product);
         onChangeMessage(Message.MSG_DETELE_PRODUCT_IN_CART_SUCCESS);
+    }
+
+    onUpdateQuantity = (product, updatedQuantity) => {
+        if (updatedQuantity > 0) {
+            var {onUpdateProductInCart, onChangeMessage} = this.props;
+            // dung state chung luon
+            // this.setState({ 
+            //     quantity: updatedQuantity
+            // })    
+           onUpdateProductInCart(product, updatedQuantity)
+           onChangeMessage(Message.MSG_UPDATE_CART_SUCCESS)
+        }
     }
 }
 
