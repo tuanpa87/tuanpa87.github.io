@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import Products from './../components/Products'
 import Product from './../components/Product'
 import PropTypes from 'prop-types';
+import {actAddToCart} from './../actions'
 
 //cac container la trung gian lay du lieu tu store chung
 //truyen props vao component tuong ung de su dung redux store
@@ -10,6 +11,7 @@ import PropTypes from 'prop-types';
 class ProductsContainer extends Component {
     render() {
         var {products} = this.props
+      
         return (
             <Products>
                 {this.showProducts(products)}
@@ -19,10 +21,14 @@ class ProductsContainer extends Component {
 
     showProducts(products) {
         var results = null;
-
+        var {onAddToCart} = this.props
         if (products.length > 0) {
             results = products.map((product, index) => {
-                return <Product key = {index} product = {product} />
+                return <Product 
+                    key = {index} 
+                    product = {product}
+                    onAddToCart = {onAddToCart}
+                />
             })
             //console.log(results)
         }
@@ -51,4 +57,13 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, null)(ProductsContainer);
+const mapDispatchToProps = (dispatch, props) => {
+    return {
+            onAddToCart: (product) => {
+                dispatch(actAddToCart(product, 1)) 
+        }
+    }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductsContainer);

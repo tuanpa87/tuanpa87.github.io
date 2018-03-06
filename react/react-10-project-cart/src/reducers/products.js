@@ -1,3 +1,5 @@
+
+
 var initialState = [
     {
         id: 1,
@@ -30,6 +32,8 @@ var initialState = [
 
 const products = (state = initialState, action) => {
     switch(action.type) {
+        
+
         default: return [...state];
     }
 }
