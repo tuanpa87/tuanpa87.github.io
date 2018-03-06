@@ -7,7 +7,7 @@ class Product extends Component {
         return (
             <div className="col-lg-4 col-md-6 mb-r">
                 <div className="card text-center card-cascade narrower">
-                    <div className="view overlay hm-white-slight z-depth-1">
+                    <div className="view overlay hm-white-slight z-depth-1 p-4 ">
                         <img src= {product.image}
                             className="img-fluid" alt= {product.name} />
                         <a>
