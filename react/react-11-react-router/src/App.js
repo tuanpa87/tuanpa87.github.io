@@ -15,7 +15,7 @@ class App extends Component {
           {/* Menu       */}
           <nav className="navbar navbar-inverse">
             <ul className="nav navbar-nav">
-              <li className="active">
+              <li>
                 <NavLink 
                   /* activeStyle = {{
                     backgroundColor: '#080808',
@@ -29,7 +29,7 @@ class App extends Component {
                   Home 
                   </NavLink>
               </li>
-              <li className="active">
+              <li>
                 <NavLink 
                   /*activeStyle = {{
                     backgroundColor: '#080808',
@@ -43,7 +43,7 @@ class App extends Component {
                   About
                 </NavLink>
               </li>
-              <li className="active">
+              <li>
                 <NavLink 
                 /*
                   activeStyle = {{
