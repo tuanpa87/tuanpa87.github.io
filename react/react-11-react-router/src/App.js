@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import './App.css';
+import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 import Home from './components/Home';
 import About from './components/About';
 import Contact from './components/Contact';
@@ -9,27 +10,61 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="App"> 
+        <div className="App">
 
           {/* Menu       */}
           <nav className="navbar navbar-inverse">
             <ul className="nav navbar-nav">
               <li className="active">
-                <Link to="/">Home</Link>
+                <NavLink 
+                  /* activeStyle = {{
+                    backgroundColor: '#080808',
+                   color: '#fff',
+                   }} 
+                  */
+                  //them class
+                  //activeClassName="active"
+                  exact to="/"
+                >
+                  Home 
+                  </NavLink>
               </li>
-              <li>
-              <Link to="/about">About</Link>
+              <li className="active">
+                <NavLink 
+                  /*activeStyle = {{
+                    backgroundColor: '#080808',
+                    color: '#fff',
+                  }} 
+                  */
+                  //them class
+                  //activeClassName="active"
+                  to="/about"
+                >
+                  About
+                </NavLink>
               </li>
-              <li>
-              <Link to="/contact">Contact</Link>
+              <li className="active">
+                <NavLink 
+                /*
+                  activeStyle = {{
+                    backgroundColor: '#080808',
+                    color: '#fff',
+                  }} 
+                */
+                //them class
+                //activeClassName="active"
+                  to="/contact"
+                >
+                  Contact
+                </NavLink>
               </li>
             </ul>
           </nav>
 
           {/* Content        */}
-          <Route path="/" exact component={Home} /> 
-          <Route path="/about" component={About} /> 
-          <Route path="/contact" component={Contact} /> 
+          <Route path="/" exact component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="/contact" component={Contact} />
         </div>
       </Router>
     );
