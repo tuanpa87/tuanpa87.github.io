@@ -4,8 +4,8 @@
   "dependencies": {
     "bootstrap-sass": "~3.3.5",
     "modernizr": "~2.8.1",
-    "scrollmagic": "^2.0.5",
-    "wow": "wowjs#^1.1.2"
+    "slick-carousel": "^1.8.1",
+    "scrollmagic": "^2.0.5"
   },
   "overrides": {
     "bootstrap-sass": {
