@@ -1,103 +1,139 @@
-import React, { Component } from 'react';
-import './App.css';
-import Person from './Person/Person';
-import UserInput from './UserInput/UserInput';
-import UserOutput from './UserOutput/UserOutput';
+import React, { Component } from "react";
+import "./App.css";
+import Person from "./Person/Person";
+import UserInput from "./UserInput/UserInput";
+import UserOutput from "./UserOutput/UserOutput";
 
 class App extends Component {
   state = {
     persons: [
       {
-        name: 'MAx', age: 28
+        id: "1",
+        name: "MAx",
+        age: 28
       },
       {
-        name: 'Mike', age: 21
+        id: "2",
+        name: "Mike",
+        age: 21
       },
       {
-        name: 'Steve', age: 55
-      },
+        id: "3",
+        name: "Steve",
+        age: 55
+      }
     ],
-    otherState: 'some other value',
-    username: 'username',
+    otherState: "some other value",
+    username: "username",
     showPersons: false
-  }
+  };
 
-  switchNameHandler = (newName) => {
-    //console.log('was clicked');
-    this.setState({
-      persons: [
-        {
-          name: newName, age: 28
-        },
-        {
-          name: 'Mikeken', age: 22
-        },
-        {
-          name: 'Steve', age: 55
-        }
-      ]
-    })
-  }
+  deletePersonHandler = personIndex => {
+    //best practice is copy new array
+    const persons = [...this.state.persons];
+    persons.splice(personIndex, 1);
+    this.setState({ persons: persons });
+  };
 
-  nameChangeHandler = (event) => {
-    this.setState({
-      persons: [
-        {
-          name: 'Max', age: 28
-        },
-        {
-          name: event.target.value, age: 22
-        },
-        {
-          name: 'Steve', age: 55
-        }
-      ]
-    })
-  }
+  // switchNameHandler = newName => {
+  //   //console.log('was clicked');
+  //   this.setState({
+  //     persons: [
+  //       {
+  //         name: newName,
+  //         age: 28
+  //       },
+  //       {
+  //         name: "Mikeken",
+  //         age: 22
+  //       },
+  //       {
+  //         name: "Steve",
+  //         age: 55
+  //       }
+  //     ]
+  //   });
+  // };
 
-  usernameChangeHandler = (event) => {
-    this.setState({
-      username: event.target.value
-    })
-  }
+  nameChangeHandler = (event,id) => {
+    
+    //find the index
+    const personIndex = this.state.persons.findIndex(p => {
+      return p.id === id;
+    });
+
+
+    //update the person[personindex] name
+    const person = {
+      ...this.state.persons[personIndex]
+    };
+    person.name = event.target.value;
+
+    //copy and update state
+    const persons = [...this.state.persons];
+    persons[personIndex] = person;
+    this.setState({persons: persons});
+  };
 
 
   togglePersonsHandler = () => {
     const doesShow = this.state.showPersons;
     this.setState({
       showPersons: !doesShow
-    })
-  }
+    });
+  };
+
+
+  //for exercise
+  usernameChangeHandler = event => {
+    this.setState({
+      username: event.target.value
+    });
+  };
 
   render() {
     const style = {
-      backgroundColor: 'white',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer'
-    }
+      backgroundColor: "white",
+      font: "inherit",
+      border: "1px solid blue",
+      padding: "8px",
+      cursor: "pointer"
+    };
 
     let persons = null;
 
     if (this.state.showPersons) {
       persons = (
+        //  <div>
+        //   <Person
+        //     name={this.state.persons[0].name}
+        //     age={this.state.persons[0].age}
+        //   />
+        //   <Person
+        //     name={this.state.persons[1].name}
+        //     age={this.state.persons[1].age}
+        //     click={this.switchNameHandler.bind(this, "Max2222")}
+        //     change={this.nameChangeHandler}
+        //   >
+        //     My Hobbies: Racing
+        //   </Person>
+        //   <Person name="Steve" age="50" />
+        // </div>
+
         <div>
-          <Person
-            name={this.state.persons[0].name}
-            age={this.state.persons[0].age}
-          />
-          <Person
-            name={this.state.persons[1].name}
-            age={this.state.persons[1].age}
-            click={this.switchNameHandler.bind(this, 'Max2222')}
-            change={this.nameChangeHandler}
-          >
-            My Hobbies: Racing
-            </Person>
-          <Person name="Steve" age="50" />
+          {this.state.persons.map((person, index) => {
+            return (
+              <Person
+                key={person.id}
+                name={person.name}
+                age={person.age}
+                click={() => this.deletePersonHandler(index)}
+                change={(event) => this.nameChangeHandler(event, person.id)}
+              />
+            );
+          })}
         </div>
-      )
+      );
     }
 
     return (
@@ -111,9 +147,7 @@ class App extends Component {
           {/* switch Name */}
           Toggle
         </button>
-
         {persons}
-
         {/* {
           this.state.showPersons ? 
             <div>
@@ -133,7 +167,6 @@ class App extends Component {
             </div> 
           : null
         } */}
-
         <br /> <br />
         <div className="exercise">
           <UserInput
@@ -141,11 +174,17 @@ class App extends Component {
             currentName={this.state.username}
           />
           <UserOutput userName="Tuan" title="Lets go" detail="somewhere" />
-          <UserOutput userName={this.state.username} title="Lets go" detail="somewhere 2 " />
-          <UserOutput userName={this.state.username} title="Lets go" detail="somewhere 3" />
+          <UserOutput
+            userName={this.state.username}
+            title="Lets go"
+            detail="somewhere 2 "
+          />
+          <UserOutput
+            userName={this.state.username}
+            title="Lets go"
+            detail="somewhere 3"
+          />
         </div>
-
-
       </div>
     );
   }
