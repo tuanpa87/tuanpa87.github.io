@@ -2,7 +2,10 @@ import React from 'react';
 
 const userInput = (props) => {
     const inputStyle = {
-        border: '2px solid red'
+        border: '2px solid salmon',
+        padding: '5px',
+        outline: 'none',
+        color: 'lightseagreen'
     };
 
     return <input 

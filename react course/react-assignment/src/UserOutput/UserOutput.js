@@ -6,7 +6,7 @@ const userOutput = (props) => {
     return (
         <div className="UserOutput">
             <p>Username: {props.userName}</p>
-            <p>I hope I'll be overwritten!</p>
+            <p>Username will be overwritten</p>
         </div>
     );
 };
