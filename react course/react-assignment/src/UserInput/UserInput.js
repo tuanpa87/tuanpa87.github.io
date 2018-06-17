@@ -5,7 +5,9 @@ const userInput = (props) => {
         border: '2px solid salmon',
         padding: '5px',
         outline: 'none',
-        color: 'lightseagreen'
+        margin: 'auto',
+        textAlign: 'center',
+        display: 'block'
     };
 
     return <input 
