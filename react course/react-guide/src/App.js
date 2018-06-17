@@ -62,7 +62,6 @@ class App extends Component {
       return p.id === id;
     });
 
-
     //update the person[personindex] name
     const person = {
       ...this.state.persons[personIndex]
@@ -84,12 +83,18 @@ class App extends Component {
   };
 
 
-  //for exercise
+  //
+  // ─── FOR EXERCISE ───────────────────────────────────────────────────────────────
+  //
+    
   usernameChangeHandler = event => {
     this.setState({
       username: event.target.value
     });
   };
+  //────────────────────────────────────────────────────────────────────────────────
+
+  
 
   render() {
     const style = {
@@ -167,6 +172,8 @@ class App extends Component {
             </div> 
           : null
         } */}
+        
+        
         <br /> <br />
         <div className="exercise">
           <UserInput
