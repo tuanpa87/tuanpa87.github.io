@@ -55,8 +55,7 @@ class App extends Component {
   //   });
   // };
 
-  nameChangeHandler = (event,id) => {
-    
+  nameChangeHandler = (event, id) => {
     //find the index
     const personIndex = this.state.persons.findIndex(p => {
       return p.id === id;
@@ -71,9 +70,8 @@ class App extends Component {
     //copy and update state
     const persons = [...this.state.persons];
     persons[personIndex] = person;
-    this.setState({persons: persons});
+    this.setState({ persons: persons });
   };
-
 
   togglePersonsHandler = () => {
     const doesShow = this.state.showPersons;
@@ -82,11 +80,10 @@ class App extends Component {
     });
   };
 
-
   //
   // ─── FOR EXERCISE ───────────────────────────────────────────────────────────────
   //
-    
+
   usernameChangeHandler = event => {
     this.setState({
       username: event.target.value
@@ -94,13 +91,12 @@ class App extends Component {
   };
   //────────────────────────────────────────────────────────────────────────────────
 
-  
-
   render() {
     const style = {
-      backgroundColor: "white",
+      backgroundColor: "lightgreen",
+      color: "white",
       font: "inherit",
-      border: "1px solid blue",
+      border: "1px solid green",
       padding: "8px",
       cursor: "pointer"
     };
@@ -133,17 +129,28 @@ class App extends Component {
                 name={person.name}
                 age={person.age}
                 click={() => this.deletePersonHandler(index)}
-                change={(event) => this.nameChangeHandler(event, person.id)}
+                change={event => this.nameChangeHandler(event, person.id)}
               />
             );
           })}
         </div>
       );
+
+      style.backgroundColor = "orange";
+    }
+
+    const classes = [];
+    if (this.state.persons.length <= 2) {
+      classes.push("lightgreen");
+    }
+    if (this.state.persons.length <= 1) {
+      classes.push("bold");
     }
 
     return (
       <div className="App">
         <h1>Hello world</h1>
+        <p className={classes.join(" ")}>This is a react app</p>
         <button
           style={style}
           //onClick={() => this.switchNameHandler('Max1') }
@@ -172,8 +179,6 @@ class App extends Component {
             </div> 
           : null
         } */}
-        
-        
         <br /> <br />
         <div className="exercise">
           <UserInput
