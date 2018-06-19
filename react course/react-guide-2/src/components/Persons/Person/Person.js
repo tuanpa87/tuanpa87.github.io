@@ -19,7 +19,6 @@ class Person extends Component {
     
 
     render() {
-
         console.log('[Person.js] inside render()')
         return (
             <div className={classes.Person}>
