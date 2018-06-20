@@ -58,15 +58,13 @@ class BurgerBuilder extends Component {
   };
 
   render() {
-    const disalbeInfo = {
+    const disalbedInfo = {
       ...this.state.ingredients
     };
 
-    for (let key in disalbeInfo) {
-      disalbeInfo[key] = disalbeInfo <= 0 
+    for (let key in disalbedInfo) {
+      disalbedInfo[key] = (disalbedInfo[key] <= 0) 
     }
-
-    console.log(disalbeInfo);
 
     return (
       <Aux>
@@ -74,7 +72,7 @@ class BurgerBuilder extends Component {
         <BuildControls
           addIngridient={this.addIngredientHandler}
           removeIngridient={this.removeIngredientHandler}
-          disabled={disalbeInfo}
+          disabled={disalbedInfo}
         />
       </Aux>
     );
