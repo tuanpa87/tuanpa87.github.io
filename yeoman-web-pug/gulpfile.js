@@ -170,9 +170,22 @@ gulp.task('wiredep', () => {
     }))
     .pipe(gulp.dest('app/styles'));
 
-  gulp.src('app/layouts/*.html')
+  gulp.src('app/layouts/*.pug')
     .pipe(wiredep({
-      ignorePath: /^(\.\.\/)*\.\./
+      ignorePath: /^(\.\.\/)*\.\./,
+      fileTypes: {
+        pug: {
+          block: /(([ \t]*)\/\/-?\s*bower:*(\S*))(\n|\r|.)*?(\/\/-?\s*endbower)/gi,
+          detect: {
+            js: /script\(.*src=['"]([^'"]+)/gi,
+            css: /link\(.*href=['"]([^'"]+)/gi
+          },
+          replace: {
+            js: 'script(src=\'{{filePath}}\')',
+            css: 'link(rel=\'stylesheet\', href=\'{{filePath}}\')'
+          }
+        }
+      }
     }))
     .pipe(gulp.dest('app/layouts'));
 });

@@ -10,7 +10,6 @@ html.no-js(lang='')
 
     // build:css styles/vendor.css
     // bower:css
-    link(rel='stylesheet', href='/bower_components/slick-carousel/slick/slick.css')
     // endbower
     // endbuild
 
@@ -27,19 +26,17 @@ html.no-js(lang='')
     <![endif]-->
     .container
       .header
-        ul.nav.nav-pills.pull-right
-          li.active: a(href='#') Home
-          li: a(href='#') About
-          li: a(href='#') Contact
-          
-        h3.text-muted webapp
-        p Replace layout in layouts/default.pug
+        ul.nav.nav-pills
+          li.nav-item: a.nav-link.active(href='#') Home
+          li.nav-item: a.nav-link(href='#') About
+          li.nav-item: a.nav-link(href='#') Contact
 
+        h3.text-muted webapp
+        p replace layout in ./layouts/default.pug
       block content
-       
 
       .footer
-        p &hearts; from the Yeoman team 4346435252666ggggg
+        p &hearts; from the Yeoman team
 
     // Google Analytics: change UA-XXXXX-X to be your site's ID.
     script.
@@ -54,24 +51,21 @@ html.no-js(lang='')
     // bower:js
     script(src='/bower_components/jquery/dist/jquery.js')
     script(src='/bower_components/modernizr/modernizr.js')
-    script(src='/bower_components/slick-carousel/slick/slick.js')
-    script(src='/bower_components/scrollmagic/scrollmagic/uncompressed/ScrollMagic.js')
     // endbower
     // endbuild
 
     // build:js scripts/plugins.js
-    script(src='/bower_components/bootstrap-sass/assets/javascripts/bootstrap/affix.js')
-    script(src='/bower_components/bootstrap-sass/assets/javascripts/bootstrap/alert.js')
-    script(src='/bower_components/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js')
-    script(src='/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js')
-    script(src='/bower_components/bootstrap-sass/assets/javascripts/bootstrap/modal.js')
-    script(src='/bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js')
-    script(src='/bower_components/bootstrap-sass/assets/javascripts/bootstrap/button.js')
-    script(src='/bower_components/bootstrap-sass/assets/javascripts/bootstrap/popover.js')
-    script(src='/bower_components/bootstrap-sass/assets/javascripts/bootstrap/carousel.js')
-    script(src='/bower_components/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js')
-    script(src='/bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js')
-    script(src='/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js')
+    script(src='/bower_components/bootstrap/assets/js/vendor/popper.min.js')
+    script(src='/bower_components/bootstrap/js/dist/util.js')
+    script(src='/bower_components/bootstrap/js/dist/dropdown.js')
+    script(src='/bower_components/bootstrap/js/dist/tooltip.js')
+    script(src='/bower_components/bootstrap/js/dist/popover.js')
+    script(src='/bower_components/bootstrap/js/dist/alert.js')
+    script(src='/bower_components/bootstrap/js/dist/button.js')
+    //script(src='/bower_components/bootstrap/js/dist/carousel.js')
+    script(src='/bower_components/bootstrap/js/dist/modal.js')
+    script(src='/bower_components/bootstrap/js/dist/scrollspy.js')
+    script(src='/bower_components/bootstrap/js/dist/tab.js')
     // endbuild
 
     // build:js scripts/main.js
