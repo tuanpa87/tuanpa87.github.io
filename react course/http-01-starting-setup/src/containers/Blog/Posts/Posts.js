@@ -7,7 +7,8 @@ import FullPost from "../FullPost/FullPost";
 
 class Posts extends Component {
   state = {
-    posts: []
+    posts: [],
+    error: false
   };
 
   componentDidMount() {
@@ -22,7 +23,7 @@ class Posts extends Component {
         }));
         this.setState({ posts: updatedPosts }); //console.log(reponse));
       })
-      .catch(error => console.log(error));
+      .catch(error => this.setState({error: true}));
   }
 
   selectedPostHandler = id => this.setState({ selectedPostId: id }); //console.log(reponse));
