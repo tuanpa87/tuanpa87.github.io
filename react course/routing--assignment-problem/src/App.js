@@ -1,8 +1,15 @@
 import React, { Component } from "react";
-import {NavLink ,BrowserRouter, Route } from "react-router-dom";
+import {
+  Switch,
+  NavLink,
+  BrowserRouter,
+  Route,
+  Redirect
+} from "react-router-dom";
 
 import Courses from "./containers/Courses/Courses";
 import Users from "./containers/Users/Users";
+import Page404 from "./components/Page404/Page404";
 
 class App extends Component {
   render() {
@@ -42,16 +49,25 @@ class App extends Component {
           <header>
             <ul>
               <li>
-              <NavLink to="/courses/" exact activeClassName="active"> Courses</NavLink>
+                <NavLink to="/courses/" exact activeClassName="active">
+                  {" "}
+                  Courses
+                </NavLink>
               </li>
               <li>
-              <NavLink to="/users/" exact activeClassName="active"> Users</NavLink>
+                <NavLink to="/users/" exact activeClassName="active">
+                  {" "}
+                  Users
+                </NavLink>
               </li>
             </ul>
           </header>
-
-          <Route path="/courses" exact component={Courses} />
-          <Route path="/users" exact component={Users} />
+          <Switch>
+            <Route path="/courses" component={Courses} />
+            <Route path="/users" exact component={Users} />
+            <Redirect from="/all-courses" to="/courses" />
+            <Route component={Page404} />
+          </Switch>
         </div>
       </BrowserRouter>
     );
