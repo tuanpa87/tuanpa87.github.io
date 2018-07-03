@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>video api</title>
+
+	<link rel="apple-touch-icon" href="apple-touch-icon.png">
+	<!-- Place favicon.ico in the root directory -->
+
+	<!-- build:css styles/vendor.css -->
+	<!-- bower:css -->
+	<!-- endbower -->
+	<!-- endbuild -->
+
+	<!-- build:css styles/main.css -->
+	<link rel="stylesheet" href="styles/main.css">
+	<!-- endbuild -->
+
+</head>
+
+<body>
+	<div class="player">
+		<video controls loop preload="metadata"  poster="video/service-ar-overview.png">
+			<source src="video/sintel-short.webm" type='video/webm;codecs="vp8, vorbis"' />
+			<source src="video/sintel-short.mp4" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
+		</video>
+
+		<div class="controls">
+			<button class="play" data-icon="P" aria-label="play pause toggle"></button>
+			<button class="stop" data-icon="S" aria-label="stop"></button>
+			<div class="timer">
+				<div></div>
+				<span aria-label="timer">00:00</span>
+			</div>
+			<button class="rwd" data-icon="B" aria-label="rewind"></button>
+			<button class="fwd" data-icon="F" aria-label="fast forward"></button>
+		</div>
+	</div>
+	<!-- build:js scripts/vendor.js -->
+	<!-- bower:js -->
+	<script src="/bower_components/jquery/dist/jquery.js"></script>
+	<!-- endbower -->
+	<!-- endbuild -->
+
+	<!-- build:js scripts/main.js -->
+	<script src="scripts/main.js"></script>
+	<!-- endbuild -->
+</body>
+
+</html>
