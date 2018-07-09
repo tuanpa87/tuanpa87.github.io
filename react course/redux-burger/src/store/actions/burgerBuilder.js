@@ -11,12 +11,12 @@ export const removeIngredient = name => ({
   ingredientName: name
 });
 
-export const setIngredients = ingredients => ({
+const setIngredients = ingredients => ({
   type: actionTypes.SET_INGREDIENTS,
   ingredients: ingredients
 });
 
-export const fetchIngredientsFailed = () => ({
+const fetchIngredientsFailed = () => ({
   type: actionTypes.FETCH_INGREDIENTS_FAILED
 })
 

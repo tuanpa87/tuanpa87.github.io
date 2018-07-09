@@ -73,7 +73,7 @@ class BurgerBuilder extends Component {
             disabled={disabledInfo}
             purchasable={this.updatePurchaseState(
               this.props.ings
-            )} /* call this every render not listening an event here*/
+            )} /* call this every time it renders, dont need to listening an event here*/
             ordered={this.purchaseHandler}
             price={this.props.price}
           />
