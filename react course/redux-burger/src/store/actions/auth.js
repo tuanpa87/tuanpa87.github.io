@@ -20,10 +20,13 @@ const checkAuthTimeout = expirationTime => dispatch => {
   setTimeout(() => dispatch(logout()), expirationTime * 1000);
 };
 
-export const logout = () => ({
-  type: actionTypes.AUTH_LOGOUT
-});
-
+export const logout = () => {
+  localStorage.removeItem("expirationDate");
+  localStorage.removeItem("token");
+  return {
+    type: actionTypes.AUTH_LOGOUT
+  };
+};
 
 export const auth = (email, password, isSignup) => dispatch => {
   dispatch(authStart());
@@ -43,6 +46,12 @@ export const auth = (email, password, isSignup) => dispatch => {
     .post(url, authData)
     .then(response => {
       console.log(response);
+
+      const expirationDate = new Date(
+        new Date().getTime() + response.data.expiresIn * 1000
+      );
+      localStorage.setItem("expirationDate", expirationDate);
+      localStorage.setItem("token", response.data.idToken);
       dispatch(authSuccess(response.data.idToken, response.data.localId));
       dispatch(checkAuthTimeout(response.data.expiresIn));
     })
@@ -51,3 +60,8 @@ export const auth = (email, password, isSignup) => dispatch => {
       dispatch(authFail(err.response.data.error));
     });
 };
+
+export const setAuthRedirectPath = path => ({
+  type: actionTypes.SET_AUTH_REDIRECT_PATH,
+  path: path
+});
