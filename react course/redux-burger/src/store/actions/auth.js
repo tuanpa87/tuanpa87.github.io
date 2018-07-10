@@ -16,13 +16,14 @@ const authFail = err => ({
   error: err
 });
 
-const logout = () => ({
-  type: actionTypes.AUTH_LOGOUT
-});
-
 const checkAuthTimeout = expirationTime => dispatch => {
   setTimeout(() => dispatch(logout()), expirationTime * 1000);
 };
+
+export const logout = () => ({
+  type: actionTypes.AUTH_LOGOUT
+});
+
 
 export const auth = (email, password, isSignup) => dispatch => {
   dispatch(authStart());
