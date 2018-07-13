@@ -1,6 +1,9 @@
 import React, { components } from "react";
-import { Link } from "react-router-doom";
-import User from "../containers/components/"
+import { Link, Route } from "react-router-dom";
+import Users from "../containers/Users";
+import asyncComponent from "./hoc/asyncComponent";
+
+const AsyncPizza = asyncComponent(() => import("../containers/Pizza"));
 
 class App extends component {
   render() {
@@ -11,11 +14,9 @@ class App extends component {
           <Link to="/pizza"> Pizza</Link>
         </div>
 
-        <div> 
-
-          
-
-
+        <div>
+          <Route path="/" exact component={Users} />
+          <Route path="/pizza" exact component={AsyncPizza} />
         </div>
       </div>
     );
