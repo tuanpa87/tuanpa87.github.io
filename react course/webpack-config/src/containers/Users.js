@@ -1,14 +1,14 @@
-import React, { component } from "react";
+import React, { Component } from 'react';
 
 class Users extends Component {
-  render() {
-    return (
-      <div>
-        <h1>The User</h1>
-        <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum veritatis officia debitis ipsa laborum quas voluptas impedit eligendi inventore iure.</p>
-      </div>
-    );
-  }
+    render () {
+        return (
+            <div>
+                <h1>The Users</h1>
+                <p>Awesome users on board of this course!</p>
+            </div>
+        );
+    }
 }
 
 export default Users;
