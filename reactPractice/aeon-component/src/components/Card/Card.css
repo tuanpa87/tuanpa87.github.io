@@ -1,0 +1,41 @@
+.Card {
+  display: flex;
+  border: 2px #000 solid;
+  margin: 1em;
+  padding: 2px;
+}
+
+.Card figure {
+  flex: 1;
+  margin: 0 2em 0 0;
+}
+
+.Card img {
+  width: 100%;
+  display: block;
+}
+
+.Card .Content {
+  flex:1;
+  padding: 2em;
+}
+
+.Card .Date {
+  font-size: 0.7em;
+}
+
+@media (max-width: 1080px) {
+  .Card {
+    flex-direction: column;
+  }
+
+  .Card figure {
+    flex: 3;
+    text-align: center;
+    margin: 0;
+  }
+
+  .Card .Content {
+    flex: 1;
+  }
+}
