@@ -9,6 +9,7 @@ class Cards extends PureComponent {
     data: null,
     error: false,
     slider: false,
+    isLocalSaved: false,
     log: new Date()
   };
 
@@ -20,6 +21,7 @@ class Cards extends PureComponent {
   }
   componentWillUnmount() {
     clearInterval(this.interval);
+    console.log("clear");
   }
 
   fetchData = () => {
@@ -27,17 +29,29 @@ class Cards extends PureComponent {
       .get("/")
       .then(response => {
         //console.log(response.data)
-        const data = response.data.slice(0, 6);
-        if (data.length <= 5) {
+        console.log("fetch");
+        localStorage.setItem("data", JSON.stringify(response.data));
+        this.setState({ isLocalSaved: true });
+
+        console.log("getfromlocal");
+        const dataCut = JSON.parse(localStorage.getItem("data")).slice(0, 6);
+        console.log(this.state);
+        if (dataCut.length <= 5) {
           this.setState({
-            data: data,
-            log: new Date()
+            data: dataCut,
+            error: false
           });
         } else {
           this.setState({
-            data: data,
-            log: new Date(),
-            slider: true
+            data: dataCut,
+            slider: true,
+            error: false
+          });
+        }
+
+        if (!this.state.error) {
+          this.setState({
+            log: new Date()
           });
         }
       })
@@ -55,11 +69,11 @@ class Cards extends PureComponent {
 
   render() {
     let cards = <h2>loading ...</h2>;
-    if (this.state.error) {
+    if (this.state.error && !this.state.isLocalSaved) {
       cards = <h2> Something went wrong...</h2>;
     }
 
-    if (!this.state.error && this.state.data) {
+    if (this.state.data) {
       cards = this.state.data.map((card, index) => {
         return (
           <div className="Card-wrapper" key={card.id}>
@@ -75,41 +89,40 @@ class Cards extends PureComponent {
         );
       });
     }
-
-    let settings = {
-      dots: true,
-      arrows: false,
-      infinite: true,
-      speed: 500,
-      slidesToShow: 3,
-      slidesToScroll: 3,
-      responsive: [
-        {
-          breakpoint: 1080,
-          settings: {
-            slidesToShow: 3,
-            slidesToScroll: 3
-          }
-        },
-        {
-          breakpoint: 768,
-          settings: {
-            slidesToShow: 2,
-            slidesToScroll: 2
-          }
-        },
-        {
-          breakpoint: 500,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1
-          }
-        }
-      ]
-    };
-
     let cardsWrapper = <div className="Cards">{cards}</div>;
-    if (this.state.slider) {
+    if (this.state.data && this.state.slider) {
+       /*Slick use cdn to load css so if network is down it can't be re render*/
+      let settings = {
+        dots: true,
+        arrows: false,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        responsive: [
+          {
+            breakpoint: 1080,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 3
+            }
+          },
+          {
+            breakpoint: 768,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2
+            }
+          },
+          {
+            breakpoint: 500,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+        ]
+      };
       cardsWrapper = <Slider {...settings}> {cards} </Slider>;
     }
 
