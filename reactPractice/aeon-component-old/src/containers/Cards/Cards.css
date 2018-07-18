@@ -1,0 +1,8 @@
+.Cards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.Card-wrapper {
+  width: 50%;
+}
