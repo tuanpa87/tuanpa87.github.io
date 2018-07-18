@@ -44,7 +44,7 @@ class Cards extends PureComponent {
     log: new Date()
   };
 
-  componentDidMount() {
+  componentDidUpdate() {
     this.getDataFromLocal();
     //event to listen local storage
     window.addEventListener('storage', this.getDataFromLocal);
@@ -57,8 +57,8 @@ class Cards extends PureComponent {
   }
 
   getDataFromLocal = () => {
-    const posts = JSON.parse(localStorage.getItem("data")).slice(0, 6);
-    if (posts && posts.length <= 5) {
+    const posts = JSON.parse(localStorage.getItem("data"))
+    if (posts.length <= 5) {
       this.setState({
         posts: posts,
         error: false,
