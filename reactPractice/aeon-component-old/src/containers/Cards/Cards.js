@@ -56,38 +56,42 @@ class Cards extends PureComponent {
     console.log("clear");
   }
 
+  getDataFromLocal = () => {
+    console.log("getfromlocal");
+    const dataCut = JSON.parse(localStorage.getItem("data"));
+    if (dataCut) {
+      this.setState({ isLocalSaved: true });
+      if (dataCut.length <= 5) {
+        this.setState({
+          data: dataCut
+        });
+      } else {
+        this.setState({
+          data: dataCut,
+          slider: true
+        });
+      }
+    }
+    return dataCut;
+  };
+
   fetchData = () => {
     axios
       .get("/")
       .then(response => {
-        //console.log(response.data)
         console.log("fetch");
         localStorage.setItem("data", JSON.stringify(response.data));
-        this.setState({ isLocalSaved: true });
-
-        console.log("getfromlocal");
-        const dataCut = JSON.parse(localStorage.getItem("data")).slice(0, 6);
-        console.log(this.state);
-        if (dataCut.length <= 5) {
-          this.setState({
-            data: dataCut,
-            error: false
-          });
-        } else {
-          this.setState({
-            data: dataCut,
-            slider: true,
-            error: false
-          });
-        }
-
-        if (!this.state.error) {
-          this.setState({
-            log: new Date()
-          });
-        }
+        this.setState({
+          log: new Date(),
+          error: false
+        });
+        this.getDataFromLocal();
       })
-      .catch(error => this.setState({ error: true }));
+      .catch(error => {
+        console.log(error);
+        this.setState({ error: true });
+        this.getDataFromLocal();
+      });
   };
 
   render() {
