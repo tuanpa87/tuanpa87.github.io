@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import {fetchPost} from "./axios/fetchPost";
+import {fetchPostUpdate, } from "./axios/fetchPost";
 
-const event = new Event('build');
-fetchPost();
+
+fetchPostUpdate();
+
 
 ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
