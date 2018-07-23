@@ -62,7 +62,9 @@ class App extends Component {
         </Transition>
         <br /> <br /> <br />
         <Modal show={this.state.modalIsOpen} closed={this.closeModal} />
-        {this.state.modalIsOpen ? <Backdrop show /> : null}
+        {this.state.modalIsOpen ? (
+          <Backdrop show closed={this.closeModal} />
+        ) : null}
         <button className="Button" onClick={this.openModal}>
           Open Modal
         </button>
