@@ -1,9 +1,19 @@
-import React from 'react';
+import React from "react";
+import { Grid } from "@material-ui/core";
+import LeftPane from "./LeftPane";
+import RightPane from "./RightPane";
 
-const Exercises = (props) => {
+const exercises = props => {
   return (
-    <div></div>
+    <Grid container>
+      <Grid item sm>
+        <LeftPane />
+      </Grid>
+      <Grid item sm>
+        <RightPane />
+      </Grid>
+    </Grid>
   );
-}
+};
 
-export default Exercises;
+export default exercises;
