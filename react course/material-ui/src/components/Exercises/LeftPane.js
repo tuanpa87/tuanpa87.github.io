@@ -26,12 +26,18 @@ const leftPane = props => {
   return (
     <Paper className={classes.Paper}>
       {props.exercises.map(([group, exercises], index) => {
-        console.log(group)
+        console.log('cat: ' + props.category)
+        console.log('group: ' + group);
         console.log(exercises);
-        return (
+        return (!props.category || props.category === group) ? ( 
+          
+          /* ************
+            map throught exercises by group
+            if cat === undefine or '' show all 
+            if not show only cat ==- group other exercises return null
+          ************ */
           <Fragment key={group}>
             <Typography variant="headline"> {group} </Typography>
-
             <List>
               {exercises.map(({ title }) => {
                 console.log({ title });
@@ -43,10 +49,19 @@ const leftPane = props => {
               })}
             </List>
           </Fragment>
-        );
+        ) : null;
       })}
     </Paper>
   );
 };
+
+/* *****
+ // http://es6-features.org/#ParameterContextMatching
+
+exercises.map(function (_ref) {
+  var title = _ref.title;
+  console.log({ title: title });
+});
+***** */
 
 export default withStyles(styles)(leftPane);

@@ -6,12 +6,25 @@ import Tab from "@material-ui/core/Tab";
 // can use props and  props.muscles
 //props here is an object
 
-const footer = ({ muscles }) => {
+const footer = ({ muscles, onSelect, category }) => {
+  const index = category
+    ? muscles.findIndex(group => group === category) + 1
+    : 0;
+
+  const onIndexSelect = (e, index) =>
+    onSelect(index === 0 ? "" : muscles[index - 1]);
+
   return (
     <Paper>
-      <Tabs value={0} indicatorColor="primary" textColor="primary" centered>
+      <Tabs
+        value={index}
+        indicatorColor="primary"
+        textColor="primary"
+        centered
+        onChange={onIndexSelect}
+      >
         <Tab label="All" />
-        {muscles.map((muscle, index) => <Tab key={index} label={muscle} />)}
+        {muscles.map((muscle, index) => <Tab key={muscle} label={muscle} />)}
       </Tabs>
     </Paper>
   );

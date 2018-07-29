@@ -11,29 +11,42 @@ class App extends Component {
   };
 
   getExercisesByGroup() {
-    return Object.entries(this.state.exercises.reduce((categories, item) => {
-      //initcategories = {}
-      //console.log(category)
-      const { muscles } = item; //~const muscles = exercise.muscles
-      //console.log(muscles)
-      categories[muscles] = categories[muscles]
-        ? [...categories[muscles], item]
-        : [item];
-      //add item to init categories
-      //if have categories[leg] then add clone and add more, if dont have then create new one
-      return categories; //return an object
-    }, {} ));
+    return Object.entries(
+      this.state.exercises.reduce((categories, item) => {
+        //initcategories = {}
+        //console.log(category)
+        const { muscles } = item; //~const muscles = exercise.muscles
+        //console.log(muscles)
+        categories[muscles] = categories[muscles]
+          ? [...categories[muscles], item]
+          : [item];
+        //add item to init categories
+        //if have categories[leg] then add clone and add more, if dont have then create new one
+        return categories; //return an object
+      }, {})
+    );
   }
+
+  handleCategorySelected = category => {
+    this.setState({ category });
+  }; //category: category;
 
   render() {
     const exercises = this.getExercisesByGroup();
     console.log(exercises);
     console.log(exercises.length);
+
+    const { category } = this.state;
+
     return (
       <div className="App">
         <Header />
-        <Exercises exercises={exercises} />
-        <Footer muscles={muscles} />
+        <Exercises exercises={exercises} category={category}/>
+        <Footer
+          muscles={muscles}
+          onSelect={this.handleCategorySelected}
+          category={category}
+        />
       </div>
     );
   }
