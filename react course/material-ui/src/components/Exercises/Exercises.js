@@ -7,7 +7,7 @@ const exercises = props => {
   return (
     <Grid container>
       <Grid item sm>
-        <LeftPane exercises={props.exercises} />
+        <LeftPane exercises={props.exercises} category={props.category}/>
       </Grid>
       <Grid item sm>
         <RightPane />
