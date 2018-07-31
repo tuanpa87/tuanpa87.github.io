@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Header from "./components/Layout/Header";
 import Footer from "./components/Layout/Footer";
-import Exercises from "./components/Exercises/Exercises";
+import Exercises from "./components/Exercises/index";
 import { muscles, exercises } from "./store";
 
 class App extends Component {
