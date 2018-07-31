@@ -7,7 +7,8 @@ import { muscles, exercises } from "./store";
 
 class App extends Component {
   state = {
-    exercises
+    exercises,
+    exercise: {}
   };
 
   getExercisesByGroup() {
@@ -31,17 +32,31 @@ class App extends Component {
     this.setState({ category });
   }; //category: category;
 
+  handleExerciesSelected = id => {
+    this.setState(
+      ({ exercise }) => ({ exercise: exercises.find(ex => ex.id === id) }) 
+      //note here is exercise (dont have s)
+      // {exercise} = prevState.exercise
+      //set state base on exercises that match selected id
+    );
+  };
+
   render() {
     const exercises = this.getExercisesByGroup();
     console.log(exercises);
     console.log(exercises.length);
 
-    const { category } = this.state;
+    const { category, exercise } = this.state;
 
     return (
       <div className="App">
         <Header />
-        <Exercises exercises={exercises} category={category}/>
+        <Exercises
+          exercises={exercises}
+          category={category}
+          onSelect={this.handleExerciesSelected}
+          exercise = {exercise}
+        />
         <Footer
           muscles={muscles}
           onSelect={this.handleCategorySelected}

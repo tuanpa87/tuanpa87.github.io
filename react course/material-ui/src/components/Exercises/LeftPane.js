@@ -26,23 +26,26 @@ const leftPane = props => {
   return (
     <Paper className={classes.Paper}>
       {props.exercises.map(([group, exercises], index) => {
-        console.log('cat: ' + props.category)
-        console.log('group: ' + group);
+        console.log("cat: " + props.category);
+        console.log("group: " + group);
         console.log(exercises);
-        return (!props.category || props.category === group) ? ( 
-          
+        return !props.category || props.category === group ? (
           /* ************
             map throught exercises by group
-            if cat === undefine or '' show all 
-            if not show only cat ==- group other exercises return null
+            if cat === undefine or '' show all (all true) 
+            if not only cat === group (true), other exercises return null (false)
           ************ */
           <Fragment key={group}>
             <Typography variant="headline"> {group} </Typography>
             <List>
-              {exercises.map(({ title }) => {
+              {exercises.map(({ id, title }) => {
                 console.log({ title });
                 return (
-                  <ListItem button key={title}>
+                  <ListItem
+                    button
+                    key={title}
+                    onClick={() => props.onSelect(id)}
+                  >
                     <ListItemText primary={title} />
                   </ListItem>
                 );

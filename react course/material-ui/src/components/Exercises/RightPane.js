@@ -9,14 +9,20 @@ const styles = {
   }
 };
 
-const rightPane = props => {
-  const { classes } = props;
+const rightPane = ( {
+  classes,
+  exercise: {
+    id,
+    title = "Welcome!", //default parameters
+    description = "Please select an exercise from the list on the left" //default parameters
+  }
+}) => {
   return (
     <Paper className={classes.Paper}>
-      <Typography variant="display1">Welcome!</Typography>
-
+      <Typography variant="display1"> {title}</Typography>
       <Typography variant="subheading" style={{ marginTop: 20 }}>
-        Please select an exercise from the list on the left
+        {" "}
+        {description}{" "}
       </Typography>
     </Paper>
   );
