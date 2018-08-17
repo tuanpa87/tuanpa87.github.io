@@ -1,7 +1,6 @@
 import React, { Fragment, Component } from "react";
 import {
   Dialog,
-  DialogActions,
   DialogContent,
   DialogContentText,
   DialogTitle,
@@ -10,7 +9,6 @@ import {
 
 import { Add } from "@material-ui/icons";
 import Form from "./Form";
-
 
 export default class extends Component {
   state = {
@@ -23,9 +21,14 @@ export default class extends Component {
     });
   };
 
+  handleFormSubmit = exercise => {
+    this.handleToggle();
+    this.props.onCreate(exercise);
+  }
+
   render() {
     const {open} = this.state;
-    const {muscles, onCreate} = this.props;
+    const {muscles} = this.props;
 
     return (
       <Fragment>
@@ -35,16 +38,15 @@ export default class extends Component {
         <Dialog
           open={open}
           onClose={this.handleToggle}
-          aria-labelledby="form-dialog-title"
         >
-          <DialogTitle id="form-dialog-title">
+          <DialogTitle>
             Create a New Exercise
           </DialogTitle>
           <DialogContent>
             <DialogContentText>
               Please fill out the form below
             </DialogContentText>
-            <Form muscles = {muscles} onSubmit={onCreate}/>
+            <Form muscles = {muscles} onSubmit={this.handleFormSubmit}/>
           </DialogContent>
         </Dialog>
       </Fragment>

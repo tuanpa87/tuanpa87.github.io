@@ -44,7 +44,10 @@ class App extends Component {
 
   handleExerciseSelect = id => {
     this.setState(
-      ({ exercises }) => ({ exercise: exercises.find(ex => ex.id === id) })
+      ({ exercises }) => ({
+        exercise: exercises.find(ex => ex.id === id),
+        editMode: false
+      })
       //note here is exercise (dont have s)
       // {exercise} = prevState.exercise
       //set state base on exercises that match selected id
@@ -53,7 +56,7 @@ class App extends Component {
 
   handleExerciseCreate = newExercise => {
     this.setState(({ exercises }) => ({
-      //exercises is the prevState
+      //exercises is part of the prevState
       exercises: [...exercises, newExercise]
     }));
   };
@@ -61,7 +64,9 @@ class App extends Component {
   handleExerciseDelete = id => {
     this.setState(({ exercises }) => ({
       //exercises is the prevState
-      exercises: exercises.filter(ex => ex.id !== id)
+      exercises: exercises.filter(ex => ex.id !== id),
+      editMode: false,
+      exercise: {}
     }));
   };
 
@@ -77,7 +82,9 @@ class App extends Component {
 
   handleExerciseEdit = exercise => {
     this.setState(({ exercises }) => ({
-      exercises: [...exercises.find(ex => ex.id === exercise.id), exercise]
+      exercises: [...exercises.filter(ex => ex.id !== exercise.id), exercise],
+      exercise, //update the form after edit
+      editMode: false
     }));
   };
 

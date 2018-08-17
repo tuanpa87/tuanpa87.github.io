@@ -27,7 +27,7 @@ export default ({
   category,
   onSelect,
   exercise,
-  exercise: {
+  exercise: {  //same exercise but add default parameter
     id,
     title = "Welcome!",
     description = "Please select an exercise from the list on the left."
