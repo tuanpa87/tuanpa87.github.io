@@ -1,12 +1,10 @@
 import React, { Component } from "react";
-import {
-  TextField,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-  Button
-} from "@material-ui/core";
+import TextField from "@material-ui/core/TextField";
+import FormControl from "@material-ui/core/FormControl";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import Button from "@material-ui/core/Button";
+import Select from "@material-ui/core/Select";
 import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({
@@ -55,7 +53,7 @@ export default withStyles(styles)(
 
     render() {
       const { title, description, muscles } = this.state,
-        { exercise ,classes, muscles: categories } = this.props;
+        { exercise, classes, muscles: categories } = this.props;
 
       return (
         <form>
@@ -89,7 +87,12 @@ export default withStyles(styles)(
           />
           <br />
 
-          <Button color="primary" variant="raised" onClick={this.handleSubmit}>
+          <Button
+            color="primary"
+            variant="raised"
+            onClick={this.handleSubmit}
+            disabled={!title || !muscles}
+          >
             {exercise ? "Edit" : "Create"}
           </Button>
         </form>
