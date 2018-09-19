@@ -1,0 +1,1 @@
+videojs('some-video-id', {techOrder: ['flash', 'html5']});
