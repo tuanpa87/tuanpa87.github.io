@@ -1,23 +1,28 @@
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="https://vjs.zencdn.net/7.1.0/video-js.css" rel="stylesheet">
 
 
- 
+  <script src="https://vjs.zencdn.net/7.1.0/video.js"></script>
+
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/6.7.3/video.js"></script> -->
+
+
+  <script src="script/video-js-ie8.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-flash@2/dist/videojs-flash.min.js"></script>
+  <script src="scripts/scripts.js"></script>
 </head>
 
 <body>
-  <video id="my-video" class="video-js" controls preload="auto" width="640" height="264"
-  poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
-    <source src="https://vjs.zencdn.net/v/oceans.mp4" type='video/mp4'>
-  
+  <video id="my-video" class="video-js" controls preload="auto" width="640" height="264"  data-setup='{"loop": true, "techOrder": ["html5", "flash"]}'>
+    <source src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+
     <p class="vjs-no-js">
       To view this video please enable JavaScript, and consider upgrading to a web browser that
       <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
     </p>
   </video>
-
-  <script src="https://vjs.zencdn.net/7.1.0/video.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/videojs-flash@2/dist/videojs-flash.min.js"></script>
-  <script src="scripts/scripts.js"></script>
 
 </body>
