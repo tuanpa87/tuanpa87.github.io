@@ -1,0 +1,68 @@
+{
+  "Result": 0,
+  "iOSVideoUrl": "http://124.215.241.227:1935/vod/mp4:8f95d125cc5a76021cc6e48c8ed9e454a8d6e0f3.mp4/playlist.m3u8",
+  "AndroidVideoUrl": "rtsp://124.215.241.227/vod/mp4:8f95d125cc5a76021cc6e48c8ed9e454a8d6e0f3.mp4",
+  "FlashVideoUrl": "rtmp://124.215.241.227/vod/mp4:8f95d125cc5a76021cc6e48c8ed9e454a8d6e0f3.mp4",
+  "ThumbnailUrl": "/static/index/fo/dGh1bWJuYWls/fi/8f95d125cc5a76021cc6e48c8ed9e454a8d6e0f3.jpg",
+  "VideoTime": "44",
+  "Point": "",
+  "FavoriteStatus": "",
+  "EnqueteUrl": "",
+  "NumberGood": 0,
+  "NumberBad": 0
+}
+
+
+// 192.168.50.54/v1/za3200/?video=886665&type=0&public=0
+// 192.168.50.54/v1/za3200/?video=886665&type=1&public=0
+// 192.168.50.54/v1/za3200/?video=886665&type=2&public=0
+
+[{
+  "video": "886665",
+  "type": 0,
+  "Result": 0,
+  "iOSVideoUrl": "http://124.215.241.227:1935/vod/mp4:8f95d125cc5a76021cc6e48c8ed9e454a8d6e0f3.mp4/playlist.m3u8",
+  "AndroidVideoUrl": "rtsp://124.215.241.227/vod/mp4:8f95d125cc5a76021cc6e48c8ed9e454a8d6e0f3.mp4",
+  "FlashVideoUrl": "rtmp://124.215.241.227/vod/mp4:8f95d125cc5a76021cc6e48c8ed9e454a8d6e0f3.mp4",
+  "ThumbnailUrl": "/static/index/fo/dGh1bWJuYWls/fi/8f95d125cc5a76021cc6e48c8ed9e454a8d6e0f3.jpg",
+  "VideoTime": "44",
+  "Point": "",
+  "FavoriteStatus": "",
+  "EnqueteUrl": "",
+  "NumberGood": 0,
+  "NumberBad": 0
+},{
+  "video": "886665",
+  "type": 1,
+  "Result": 0,
+  "iOSVideoUrl": "http://124.215.241.227:1935/vod/mp4:8f95d125cc5a76021cc6e48c8ed9e454a8d6e0f3.mp4/playlist.m3u8",
+  "AndroidVideoUrl": "rtsp://124.215.241.227/vod/mp4:8f95d125cc5a76021cc6e48c8ed9e454a8d6e0f3.mp4",
+  "FlashVideoUrl": "rtmp://124.215.241.227/vod/mp4:8f95d125cc5a76021cc6e48c8ed9e454a8d6e0f3.mp4",
+  "ThumbnailUrl": "/static/index/fo/dGh1bWJuYWls/fi/8f95d125cc5a76021cc6e48c8ed9e454a8d6e0f3.jpg",
+  "VideoTime": "44",
+  "Point": "",
+  "FavoriteStatus": "",
+  "EnqueteUrl": "",
+  "NumberGood": 0,
+  "NumberBad": 0
+},{
+  "video": "886665",
+  "type": 2,
+  "Result": 0,
+  "iOSVideoUrl": "http://124.215.241.227:1935/vod/mp4:8f95d125cc5a76021cc6e48c8ed9e454a8d6e0f3.mp4/playlist.m3u8",
+  "AndroidVideoUrl": "rtsp://124.215.241.227/vod/mp4:8f95d125cc5a76021cc6e48c8ed9e454a8d6e0f3.mp4",
+  "FlashVideoUrl": "rtmp://124.215.241.227/vod/mp4:8f95d125cc5a76021cc6e48c8ed9e454a8d6e0f3.mp4",
+  "ThumbnailUrl": "/static/index/fo/dGh1bWJuYWls/fi/8f95d125cc5a76021cc6e48c8ed9e454a8d6e0f3.jpg",
+  "VideoTime": "44",
+  "Point": "",
+  "FavoriteStatus": "",
+  "EnqueteUrl": "",
+  "NumberGood": 0,
+  "NumberBad": 0
+}]
+
+
+
+//http://192.168.50.54/v1/za3200/?video=886665&type=1&public=0
+//http://192.168.50.54/v1/za3200/?video=886665&type=0&public=0
+//http://192.168.50.54/v1/za3200/?video=886665&type=2&public=0

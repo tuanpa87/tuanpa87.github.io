@@ -1,0 +1,34 @@
+{
+  "za3200": [
+    {
+      "video": "886795",
+      "type": 0,
+      "AndroidVideoUrl": "http://d3tjy7bsh59tc.cloudfront.net/10minutes/10minutes.mp4",
+      "FlashVideoUrl": "http://d3tjy7bsh59tc.cloudfront.net/10minutes/10minutes.mp4"
+    },
+    {
+      "video": "886795",
+      "type": 1,
+      "AndroidVideoUrl": "http://d3tjy7bsh59tc.cloudfront.net/10minutes/10minutes.mp4",
+      "FlashVideoUrl": "http://vjs.zencdn.net/v/oceans.mp4"
+    },
+    {
+      "video": "886795",
+      "type": 2,
+      "AndroidVideoUrl": "http://d3tjy7bsh59tc.cloudfront.net/10minutes/10minutes.mp4",
+      "FlashVideoUrl": "rtmp://s2kzr4pts5wz18.cloudfront.net/cfx/st/mp4:10minutes_speed.mp4"
+    },
+    {
+      "video": "886795",
+      "type": 3,
+      "videoHdUrl": "https://d18n7y8hexo5qp.cloudfront.net/10minutestest/mpd/10minutestest_high_PL.mpd",
+      "videoSdUrl": "https://d18n7y8hexo5qp.cloudfront.net/10minutestest/mpd/10minutestest_low_PL.mpd"
+    },
+    {
+      "video": "886795",
+      "type": 4,
+      "videoHdUrl": "https://d18n7y8hexo5qp.cloudfront.net/10minutestest/hls/10minutestest_high_PL.m3u8",
+      "videoSdUrl": "https://d18n7y8hexo5qp.cloudfront.net/10minutestest/hls/10minutestest_low_PL.m3u8"
+    }
+  ]
+}
