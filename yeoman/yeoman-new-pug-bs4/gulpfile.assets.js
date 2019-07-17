@@ -125,18 +125,16 @@ function images() {
 };
 
 function fonts() {
-  return src('app/fonts/**/*.{eot,svg,ttf,woff,woff2}')
+  return src('app/assets/fonts/**/*.{eot,svg,ttf,woff,woff2}')
     .pipe($.if(!isProd, dest('.tmp/assets/fonts'), dest('dist/assets/fonts')));
 };
 
 function extras() {
   return src([
-    'app/*',
-    '!app/*.html',
-    '!app/*.pug'
+    'app/assets/files/**/*'
   ], {
     dot: true
-  }).pipe(dest('dist/assets'));
+  }).pipe(dest('dist/assets/files'));
 };
 
 function clean() {
