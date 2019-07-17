@@ -179,6 +179,7 @@ function startAppServer() {
     '.tmp/fonts/**/*'
   ]).on('change', server.reload);
 
+  watch('app/**/*.pug', view);
   watch('app/styles/**/*.scss', styles);
   watch('app/scripts/**/*.js', scripts);
   watch('modernizr.json', modernizr);
